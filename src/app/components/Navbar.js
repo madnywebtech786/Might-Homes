@@ -47,9 +47,13 @@ export default function Navbar() {
           <div className="text-base font-bold">
             <Link href="/">
               <Image
-                src={isSticky ? "/images/logo.png" : "/images/logo.png"}
-                width={200}
-                height={200}
+                src={
+                  isSticky
+                    ? "/images/logoRounded.png"
+                    : "/images/logoRounded.png"
+                }
+                width={100}
+                height={100}
                 alt="Mighty Homes Logo"
                 className="pt-5"
               />
