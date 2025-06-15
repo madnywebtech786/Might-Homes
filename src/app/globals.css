@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+@theme {
+  --color-primary:#B78B37;
+  --text-xxs:10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Initial state of the dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  color: #4a4a4a;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: max-content;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+/* Show the dropdown when hovering over the parent element */
+.group:hover .dropdown-menu {
+  opacity: 1; /* Fade in */
+  transform: translateY(0px); /* Slide up into view */
+  pointer-events: auto; /* Enable interaction with the dropdown */
+}
+
+/* Hover effect for links */
+.dropdown-menu a {
+  padding: 8px 16px;
+  display: block;
+  text-decoration: none;
+  color: #4a4a4a;
+}
+
+.dropdown-menu a:hover {
+  color: white;
+}
+
+.swiper-pagination{
+  bottom: -0px !important;
+}
+
+.stroke-text {
+  -webkit-text-stroke: 1px #B78B37;
+  color: transparent;
+}
