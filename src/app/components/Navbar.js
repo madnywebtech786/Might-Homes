@@ -38,9 +38,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`absolute w-full top-0 z-50 px-4 md:px-8 lg:px-12 2xl:px-10 py-5 transition-colors duration-300 ${
-          isSticky ? "bg-black text-white" : "bg-transparent text-white"
-        }`}
+        className={`absolute w-full top-0 z-50 px-4 md:px-8 lg:px-12 2xl:px-10 py-5 transition-colors duration-300 text-white`}
       >
         <div className="container mx-auto lg:px-4 flex items-center justify-between h-16">
           {/* Logo */}
@@ -84,13 +82,13 @@ export default function Navbar() {
               <div className="dropdown-menu text-sm">
                 <Link
                   href="/planning/weddings"
-                  className="block px-4 py-2 hover:bg-primaryLight capitalize rounded-t-md"
+                  className="block px-4 py-2 hover:bg-primary capitalize rounded-t-md border-b border-primary"
                 >
                   Chestermer
                 </Link>
                 <Link
                   href="/planning/corporate-events"
-                  className="block px-4 py-2 hover:bg-primaryLight capitalize border-y"
+                  className="block px-4 py-2 hover:bg-primary capitalize rounded-b-md"
                 >
                   Airdrie
                 </Link>
@@ -115,25 +113,25 @@ export default function Navbar() {
               <div className="dropdown-menu text-sm">
                 <Link
                   href="/planning/weddings"
-                  className="block px-4 py-2 hover:bg-primaryLight capitalize rounded-t-md"
+                  className="block px-4 py-2 hover:bg-primary capitalize rounded-t-md border-b border-primary"
                 >
                   Aspire
                 </Link>
                 <Link
                   href="/planning/corporate-events"
-                  className="block px-4 py-2 hover:bg-primaryLight capitalize border-y"
+                  className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
                 >
                   Davis
                 </Link>
                 <Link
                   href="/planning/weddings"
-                  className="block px-4 py-2 hover:bg-primaryLight capitalize rounded-t-md"
+                  className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
                 >
                   Dean
                 </Link>
                 <Link
                   href="/planning/weddings"
-                  className="block px-4 py-2 hover:bg-primaryLight capitalize rounded-t-md"
+                  className="block px-4 py-2 hover:bg-primary capitalize rounded-b-md"
                 >
                   Eastwood
                 </Link>
@@ -155,8 +153,9 @@ export default function Navbar() {
               <Link href="/contact-us">
                 <Button
                   text={"Book Now"}
-                  className="px-4 py-3 "
+                  className="px-4 py-3 bg-primary rounded-xl "
                   isSticky={isSticky}
+                  cl
                 />
               </Link>
             </div>

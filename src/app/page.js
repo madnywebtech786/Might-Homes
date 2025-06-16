@@ -11,6 +11,8 @@ import FAQs from "./sections/FAQs";
 import Gallery from "./sections/Gallery";
 import WhyChooseUs from "./sections/WhyChooseUs";
 import Testimonials from "./sections/Testimonials";
+import ContactUs from "./sections/ContactUs";
+import Footer from "./sections/Footer";
 
 export default function Home() {
   return (
@@ -26,6 +28,8 @@ export default function Home() {
       <Communities />
       <FAQs />
       <Testimonials />
+      <ContactUs />
+      <Footer />
     </div>
   );
 }
