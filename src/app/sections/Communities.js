@@ -39,7 +39,7 @@ export default function Communities() {
     },
   ];
   return (
-    <div className="bg-gray-50 p-4 md:p-8 lg:p-12 2xl:p-20">
+    <div className="bg-white p-4 md:p-8 lg:p-12 2xl:p-20">
       <div className="flex justify-between items-center">
         <p className="text-xl sm:text-2xl md:text-4xl lg:text-3xl px-4 font-semibold headFont mt-2 text-[#0a1e40]">
           Communities

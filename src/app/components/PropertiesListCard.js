@@ -4,7 +4,7 @@ import { Home, Bed, ShowerHead, LocateFixed } from "lucide-react";
 
 export default function PropertiesListCard({ cardData, index }) {
   return (
-    <div className="bg-white w-full pb-4 group" key={index}>
+    <div className="bg-white w-full pb-4 group rounded-xl" key={index}>
       <div className="relative overflow-hidden">
         <div className="flex justify-center">
           <Image
@@ -12,7 +12,7 @@ export default function PropertiesListCard({ cardData, index }) {
             width={500}
             height={500}
             alt="Properties-List Image"
-            className="w-full max-h-[300px]"
+            className="w-full max-h-[300px] rounded-t-xl"
           />
         </div>
         <div className="absolute top-full left-0 group-hover:top-0 duration-600 bg-white/20 flex items-center justify-center w-full h-full">

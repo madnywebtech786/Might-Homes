@@ -22,11 +22,9 @@ export default function Home() {
       <AboutAfter />
       <WhyChooseUs />
       <Properties />
-      <Gallery />
       <WorkingCities />
       <Steps />
       <Communities />
-      <FAQs />
       <Testimonials />
       <ContactUs />
       <Footer />

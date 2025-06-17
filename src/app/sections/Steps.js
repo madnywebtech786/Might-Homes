@@ -16,7 +16,7 @@ export default function Steps() {
     { title: "Success", desc: "Enjoy your upgraded exterior!" },
   ];
   return (
-    <div className=" px-4 py-10 md:px-10 lg:px-20 lg:pt-30 lg:pb-20">
+    <div className="bg-gray-50 px-4 py-10 md:px-10 lg:px-20 lg:pt-30 lg:pb-20">
       <p className="text-xl sm:text-2xl md:text-4xl lg:text-3xl px-4 font-semibold headFont mt-2 text-center">
         Our Easy Working Steps
       </p>

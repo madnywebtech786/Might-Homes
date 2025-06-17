@@ -16,21 +16,21 @@ export default function Testimonials() {
       designation: "CEO, Momens Group",
       message:
         "We were extremely happy with the quality of work and professionalism. The team went above and beyond our expectations!",
-      image: "/images/AboutUsSideImage.png",
+      image: "/images/client1.png",
     },
     {
       name: "Daniel Robertson",
       designation: "Homeowner, Calgary",
       message:
         "Mighty Homes delivered on time and exceeded our expectations. Highly recommended for any exterior project!",
-      image: "/images/AboutUsSideImage.png",
+      image: "/images/client2.png",
     },
     {
       name: "Samantha Lee",
       designation: "Real Estate Investor",
       message:
         "The team was incredibly responsive and the results were stunning. Our curb appeal is on another level now!",
-      image: "/images/AboutUsSideImage.png",
+      image: "/images/client3.png",
     },
   ];
   return (

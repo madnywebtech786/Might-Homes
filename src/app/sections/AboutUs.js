@@ -19,7 +19,7 @@ export default function AboutUs() {
         <div className="w-full flex justify-center lg:w-1/2">
           <div className="mt-20 lg:mt-12">
             <p className="text-md font-bold tracking-wider text-primary">
-              SIDHU HOMES
+              Mighty HOMES
             </p>
             <p className="text-xl sm:text-2xl md:text-4xl lg:text-3xl px-4 font-semibold headFont mt-2 text-[#0a1e40]">
               High-quality Custom home
@@ -36,9 +36,14 @@ export default function AboutUs() {
                 our Sidhu Seal—the highest quality of construction and
                 materials.
               </p>
-              <button className="bg-transparent mt-10 py-2 font-bold border-b-2 border-primary text-primary hover:cursor-pointer hover:scale-95">
-                Explore Our Projects
-              </button>
+              <div className="flex gap-5">
+                <button className="bg-transparent mt-10 py-2 font-bold border-b-2 border-primary text-primary hover:cursor-pointer hover:scale-95">
+                  Learn More
+                </button>
+                <button className="bg-transparent mt-10 py-2 font-bold border-b-2 border-primary text-primary hover:cursor-pointer hover:scale-95">
+                  Explore Our Projects
+                </button>
+              </div>
             </div>
           </div>
         </div>

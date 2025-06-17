@@ -11,7 +11,7 @@ export default function TestimonialCard({ image, name, designation, message }) {
             width={150}
             height={200}
             alt={`${name} Image`}
-            className="w-[100px] h-[110px] sm:w-[120px] sm:h-[120px] rounded-lg"
+            className="w-[100px] h-[110px] sm:w-[120px] sm:h-[120px] object-cover rounded-lg"
           />
         </div>
         <div className="mt-[-30px]">

@@ -4,7 +4,7 @@ import PropertiesListCard from "../components/PropertiesListCard";
 export default function Properties() {
   const propertiesListsData = [
     {
-      cardImageSrc: "/images/AboutUsSideImage.png",
+      cardImageSrc: "/images/buildSlide1.png",
       acres: "20,000",
       bedrooms: "3",
       bathrooms: "3",
@@ -14,7 +14,7 @@ export default function Properties() {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dignissimos dolor sapiente obcaecati ullam.",
     },
     {
-      cardImageSrc: "/images/AboutUsSideImage.png",
+      cardImageSrc: "/images/buildSlide2.png",
       acres: "20,000",
       bedrooms: "3",
       bathrooms: "3",
@@ -24,7 +24,7 @@ export default function Properties() {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dignissimos dolor sapiente obcaecati ullam.",
     },
     {
-      cardImageSrc: "/images/AboutUsSideImage.png",
+      cardImageSrc: "/images/buildSlide3.png",
       acres: "20,000",
       bedrooms: "3",
       bathrooms: "3",
@@ -34,7 +34,7 @@ export default function Properties() {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dignissimos dolor sapiente obcaecati ullam.",
     },
     {
-      cardImageSrc: "/images/AboutUsSideImage.png",
+      cardImageSrc: "/images/buildSlide3.png",
       acres: "20,000",
       bedrooms: "3",
       bathrooms: "3",
@@ -44,7 +44,7 @@ export default function Properties() {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dignissimos dolor sapiente obcaecati ullam.",
     },
     {
-      cardImageSrc: "/images/AboutUsSideImage.png",
+      cardImageSrc: "/images/buildSlide1.png",
       acres: "20,000",
       bedrooms: "3",
       bathrooms: "3",
@@ -54,7 +54,7 @@ export default function Properties() {
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dignissimos dolor sapiente obcaecati ullam.",
     },
     {
-      cardImageSrc: "/images/AboutUsSideImage.png",
+      cardImageSrc: "/images/buildSlide2.png",
       acres: "20,000",
       bedrooms: "3",
       bathrooms: "3",

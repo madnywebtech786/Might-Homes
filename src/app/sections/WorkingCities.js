@@ -39,7 +39,7 @@ export default function WorkingCities() {
     },
   ];
   return (
-    <div className="bg-gray-50 p-4 py-10 md:p-8 lg:p-12 2xl:p-20 lg:!pb-40 relative">
+    <div className="bg-white p-4 py-10 md:p-8 lg:p-12 2xl:p-20 lg:!pb-40 relative">
       <p className="text-xl sm:text-2xl md:text-4xl lg:text-3xl px-4 font-semibold headFont mt-2 text-center">
         Our Working Areas
       </p>

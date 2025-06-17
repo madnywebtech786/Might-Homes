@@ -81,13 +81,13 @@ export default function Navbar() {
               {/* Dropdown Menu */}
               <div className="dropdown-menu text-sm">
                 <Link
-                  href="/planning/weddings"
+                  href="/home/Chestermer"
                   className="block px-4 py-2 hover:bg-primary capitalize rounded-t-md border-b border-primary"
                 >
                   Chestermer
                 </Link>
                 <Link
-                  href="/planning/corporate-events"
+                  href="/home/Airdrie"
                   className="block px-4 py-2 hover:bg-primary capitalize rounded-b-md"
                 >
                   Airdrie
@@ -112,28 +112,95 @@ export default function Navbar() {
               {/* Dropdown Menu */}
               <div className="dropdown-menu text-sm">
                 <Link
-                  href="/planning/weddings"
+                  href="/home/Aspire"
                   className="block px-4 py-2 hover:bg-primary capitalize rounded-t-md border-b border-primary"
                 >
                   Aspire
                 </Link>
                 <Link
-                  href="/planning/corporate-events"
+                  href="/home/Davis"
                   className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
                 >
                   Davis
                 </Link>
                 <Link
-                  href="/planning/weddings"
+                  href="/home/Dean"
                   className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
                 >
                   Dean
                 </Link>
                 <Link
-                  href="/planning/weddings"
+                  href="/home/Eastwood"
                   className="block px-4 py-2 hover:bg-primary capitalize rounded-b-md"
                 >
                   Eastwood
+                </Link>
+              </div>
+            </div>
+            <div className="relative group menu">
+              <div className="flex items-center">
+                <Link href="#" className=" flex items-center py-3 ">
+                  Communities
+                  <span className="ml-2 transition-transform transform group-hover:rotate-180">
+                    <Image
+                      src="/images/icons/ArrowDownWhite.svg"
+                      alt="arrow img"
+                      width={13}
+                      height={13}
+                    />
+                  </span>
+                </Link>
+              </div>
+
+              {/* Dropdown Menu */}
+              <div className="dropdown-menu text-sm">
+                <Link
+                  href="/Community/"
+                  className="block px-4 py-2 hover:bg-primary capitalize rounded-t-md border-b border-primary"
+                >
+                  All Communities
+                </Link>
+                <Link
+                  href="/Community/Air-Ranch"
+                  className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
+                >
+                  Air Ranch | Okotoksh
+                </Link>
+                <Link
+                  href="/Community/River-Crest"
+                  className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
+                >
+                  River Crest | Cochrane
+                </Link>
+                <Link
+                  href="/Community/Clear-Water"
+                  className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
+                >
+                  Clear Water | Chestermere
+                </Link>
+                <Link
+                  href="/Community/South-Shore"
+                  className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
+                >
+                  South Shore | Chestermere
+                </Link>
+                <Link
+                  href="/Community/Aspan"
+                  className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
+                >
+                  Aspan | Calagry
+                </Link>
+                <Link
+                  href="/Community/Bonus"
+                  className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
+                >
+                  Bonus | Calgary
+                </Link>
+                <Link
+                  href="/Community/Abrio"
+                  className="block px-4 py-2 hover:bg-primary capitalize rounded-b-md"
+                >
+                  Abrio | Airdrie
                 </Link>
               </div>
             </div>
@@ -153,7 +220,7 @@ export default function Navbar() {
               <Link href="/contact-us">
                 <Button
                   text={"Book Now"}
-                  className="px-4 py-3 bg-primary rounded-xl "
+                  className="px-4 py-3 bg-primary rounded-lg "
                   isSticky={isSticky}
                   cl
                 />
@@ -219,14 +286,14 @@ export default function Navbar() {
               >
                 <div className="flex flex-col bg-primaryExtraLight text-base rounded-lg">
                   <Link
-                    href="/planning/weddings"
+                    href="/home/Chestermer"
                     className="block px-4 py-3 "
                     onClick={closeMobileNav}
                   >
                     Chestermer
                   </Link>
                   <Link
-                    href="/planning/corporate-events"
+                    href="/home/Airdrie"
                     className="block px-4 py-3 "
                     onClick={closeMobileNav}
                   >
@@ -263,39 +330,124 @@ export default function Navbar() {
               >
                 <div className="flex flex-col bg-primaryExtraLight text-base rounded-lg">
                   <Link
-                    href="/planning/weddings"
+                    href="/home/Aspire"
                     className="block px-4 py-3 "
                     onClick={closeMobileNav}
                   >
                     Aspire
                   </Link>
                   <Link
-                    href="/planning/corporate-events"
+                    href="/home/Connery"
                     className="block px-4 py-3 "
                     onClick={closeMobileNav}
                   >
                     Connery
                   </Link>
                   <Link
-                    href="/planning/birthdays"
+                    href="/home/Davis"
                     className="block px-4 py-3 "
                     onClick={closeMobileNav}
                   >
                     Davis
                   </Link>
                   <Link
-                    href="/planning/video-&-photography"
+                    href="/home/Dean"
                     className="block px-4 py-3 "
                     onClick={closeMobileNav}
                   >
                     Dean
                   </Link>
                   <Link
-                    href="/planning/decor"
+                    href="/home/Eastwood"
                     className="block px-4 py-3 "
                     onClick={closeMobileNav}
                   >
                     Eastwood
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="w-full mobile-menu">
+              {/* Planning Accordion */}
+              <button
+                onClick={() => toggleAccordion(3)}
+                className="text-base font-medium w-full text-left py-3 border-b flex justify-between items-center "
+              >
+                Communities
+                <Image
+                  src="/images/icons/ArrowDown.svg"
+                  alt="arrow"
+                  width={13}
+                  height={13}
+                  className={`transform transition-transform ${
+                    activeAccordion === 3 ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+              <div
+                className={`overflow-hidden transition-all duration-500 ${
+                  activeAccordion === 3 ? "max-h-80" : "max-h-0"
+                }`}
+                style={{
+                  transitionProperty: "max-height",
+                }}
+              >
+                <div className="flex flex-col bg-primaryExtraLight text-base rounded-lg">
+                  <Link
+                    href="/Community/all"
+                    className="block px-4 py-3 "
+                    onClick={closeMobileNav}
+                  >
+                    All Communities
+                  </Link>
+                  <Link
+                    href="/Community/Air-Ranch"
+                    className="block px-4 py-3 "
+                    onClick={closeMobileNav}
+                  >
+                    Air Ranch | Okotoksh
+                  </Link>
+                  <Link
+                    href="/Community/River-Crest"
+                    className="block px-4 py-3 "
+                    onClick={closeMobileNav}
+                  >
+                    River Crest | Cochrane
+                  </Link>
+                  <Link
+                    href="/Community/Clear-Water"
+                    className="block px-4 py-3 "
+                    onClick={closeMobileNav}
+                  >
+                    Clear Water | Chestermere
+                  </Link>
+                  <Link
+                    href="/Community/South-Shore"
+                    className="block px-4 py-3 "
+                    onClick={closeMobileNav}
+                  >
+                    South Shore | Chestermere
+                  </Link>{" "}
+                  <Link
+                    href="/Community/Aspan"
+                    className="block px-4 py-3 "
+                    onClick={closeMobileNav}
+                  >
+                    Aspan | Calagry
+                  </Link>{" "}
+                  <Link
+                    href="/Community/Bonus"
+                    className="block px-4 py-3 "
+                    onClick={closeMobileNav}
+                  >
+                    Bonus | Calgary
+                  </Link>
+                  <Link
+                    href="/Community/Abrio"
+                    className="block px-4 py-3 "
+                    onClick={closeMobileNav}
+                  >
+                    Abrio | Airdrie
                   </Link>
                 </div>
               </div>

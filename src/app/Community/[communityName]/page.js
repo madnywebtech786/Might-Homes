@@ -6,7 +6,7 @@ import SalesPersons from "./sections/SalesPersons";
 import CommunityBreadcrumb from "@/app/components/CommunityBreadcrumb";
 
 export default function page({ params }) {
-  const name = params.communityName;
+  const name = params.communityName.replace('-'," ");
   return (
     <div>
       <CommunityBreadcrumb
@@ -17,7 +17,7 @@ export default function page({ params }) {
         <div className="w-4/5 md:w-[75%] flex flex-col lg:flex-row gap-8">
           <div className="w-full flex justify-center">
             <Image
-              src="/images/AboutUsSideImage.png"
+              src="/images/buildSlide3.png"
               width={600}
               height={500}
               alt="Community Image"
@@ -44,7 +44,7 @@ export default function page({ params }) {
 
       <div className="w-full p-4 py-10 md:p-8 lg:p-12 2xl:p-20">
         <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-3xl font-bold text-center">
-          Community Of Savanna
+          Community Of {name}
         </h2>
         <div className="w-full flex justify-center my-10">
           <div className="w-4/5 md:w-6/10">
