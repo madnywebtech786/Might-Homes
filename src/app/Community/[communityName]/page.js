@@ -49,7 +49,7 @@ export default function page({ params }) {
         <div className="w-full flex justify-center my-10">
           <div className="w-4/5 md:w-6/10">
             <Image
-              src="/images/CommunityOfSavanna.png"
+              src="/images/CommunityOfSavanna.PNG"
               width={600}
               height={600}
               alt="Community Image"

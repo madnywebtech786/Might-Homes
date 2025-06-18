@@ -116,7 +116,7 @@ const page = ({params}) => {
           <p className="text-base text-primary">Floor Plan</p>
         </div>
         <Image
-          src={"/images/aspire-floor.png"}
+          src={"/images/aspire-floor.PNG"}
           alt="aspire floor plan"
           width={500}
           height={500}
