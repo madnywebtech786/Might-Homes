@@ -47,6 +47,29 @@ function MobileLink({ href, children, onClick }) {
   );
 }
 
+function MobileSubAccordion({ label, children, isOpen, onToggle }) {
+  return (
+    <div className="w-full">
+      <button
+        onClick={onToggle}
+        className="w-full flex items-center justify-between px-3 py-2 text-sm text-white/60 hover:text-primary transition-all duration-200"
+      >
+        <span>{label}</span>
+        <ChevronDown
+          className={`w-3.5 h-3.5 transition-transform duration-300 ${isOpen ? "rotate-180 text-primary" : ""}`}
+        />
+      </button>
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}
+      >
+        <div className="ml-4 flex flex-col gap-1 py-1">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function MobileNavLink({ href, label, icon: Icon, onClick }) {
   return (
     <Link
@@ -65,6 +88,7 @@ function MobileNavLink({ href, label, icon: Icon, onClick }) {
 export default function Navbar() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [activeAccordion, setActiveAccordion] = useState(null);
+  const [activeSubAccordion, setActiveSubAccordion] = useState(null);
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
@@ -79,8 +103,12 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ""; };
   }, [isMobileNavOpen]);
 
-  const toggleAccordion = (i) => setActiveAccordion((prev) => (prev === i ? null : i));
-  const closeMobileNav = () => { setActiveAccordion(null); setIsMobileNavOpen(false); };
+  const toggleAccordion = (i) => {
+    setActiveAccordion((prev) => (prev === i ? null : i));
+    setActiveSubAccordion(null);
+  };
+  const toggleSubAccordion = (i) => setActiveSubAccordion((prev) => (prev === i ? null : i));
+  const closeMobileNav = () => { setActiveAccordion(null); setActiveSubAccordion(null); setIsMobileNavOpen(false); };
 
   return (
     <>
@@ -103,11 +131,19 @@ export default function Navbar() {
                 </span>
               </span>
               <div className="dropdown-menu text-sm">
-                <Link href="/home/aurora" className="block px-4 py-2 hover:bg-primary capitalize rounded-t-md border-b border-primary">The Aurora</Link>
-                <Link href="/home/luxe" className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary">The Luxe</Link>
-                <Link href="/home/legacy" className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary">The Legacy</Link>
-                <Link href="/home/bayview" className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary">The Bayview</Link>
-                <Link href="/home/willow" className="block px-4 py-2 hover:bg-primary capitalize rounded-b-md">The Willow</Link>
+                <div className="relative group/sub submenu-parent">
+                  <span className="block px-4 py-2 capitalize rounded-t-md border-b border-primary cursor-default w-full">South Shore | Chestermere</span>
+                  <div className="submenu">
+                    <Link href="/home/aurora" className="block px-4 py-2 capitalize">The Aurora</Link>
+                  </div>
+                </div>
+
+                <div className="relative group/sub submenu-parent">
+                  <span className="block px-4 py-2 capitalize border-b border-primary cursor-default w-full">Bay Springs | Airdrie</span>
+                  <div className="submenu">
+                    <Link href="/coming-soon" className="block px-4 py-2 capitalize">Coming Soon</Link>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -119,11 +155,11 @@ export default function Navbar() {
                 </span>
               </span>
               <div className="dropdown-menu text-sm">
-                <Link href="/home/aurora" className="block px-4 py-2 hover:bg-primary capitalize rounded-t-md border-b border-primary">The Aurora</Link>
-                <Link href="/home/luxe" className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary">The Luxe</Link>
-                <Link href="/home/legacy" className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary">The Legacy</Link>
-                <Link href="/home/bayview" className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary">The Bayview</Link>
-                <Link href="/home/willow" className="block px-4 py-2 hover:bg-primary capitalize rounded-b-md">The Willow</Link>
+                <Link href="/home/aurora" className="block px-4 py-2 capitalize rounded-t-md border-b border-primary">The Aurora</Link>
+                <Link href="/home/luxe" className="block px-4 py-2 capitalize border-b border-primary">The Luxe</Link>
+                <Link href="/home/legacy" className="block px-4 py-2 capitalize border-b border-primary">The Legacy</Link>
+                <Link href="/home/bayview" className="block px-4 py-2 capitalize border-b border-primary">The Bayview</Link>
+                <Link href="/home/willow" className="block px-4 py-2 capitalize rounded-b-md">The Willow</Link>
               </div>
             </div>
 
@@ -187,11 +223,21 @@ export default function Navbar() {
             isOpen={activeAccordion === 1}
             onToggle={() => toggleAccordion(1)}
           >
-            <MobileLink href="/home/aurora" onClick={closeMobileNav}>The Aurora</MobileLink>
-            <MobileLink href="/home/luxe" onClick={closeMobileNav}>The Luxe</MobileLink>
-            <MobileLink href="/home/legacy" onClick={closeMobileNav}>The Legacy</MobileLink>
-            <MobileLink href="/home/bayview" onClick={closeMobileNav}>The Bayview</MobileLink>
-            <MobileLink href="/home/willow" onClick={closeMobileNav}>The Willow</MobileLink>
+            <MobileSubAccordion
+              label="South Shore | Chestermere"
+              isOpen={activeSubAccordion === 1.1}
+              onToggle={() => toggleSubAccordion(1.1)}
+            >
+              <MobileLink href="/home/aurora" onClick={closeMobileNav}>The Aurora</MobileLink>
+            </MobileSubAccordion>
+
+            <MobileSubAccordion
+              label="Bay Springs | Airdrie"
+              isOpen={activeSubAccordion === 1.2}
+              onToggle={() => toggleSubAccordion(1.2)}
+            >
+              <MobileLink href="/coming-soon" onClick={closeMobileNav}>Coming Soon</MobileLink>
+            </MobileSubAccordion>
           </MobileAccordion>
 
           <MobileAccordion
@@ -234,13 +280,13 @@ export default function Navbar() {
               </div>
               587-435-7924
             </a>
-            <a href="mailto:info@mightygomesinc.ca" className="flex items-center gap-2.5 text-white/50 hover:text-primary transition-colors duration-200 text-xs">
+            <a href="mailto:info@mightyhomesinc.ca" className="flex items-center gap-2.5 text-white/50 hover:text-primary transition-colors duration-200 text-xs">
               <div className="w-6 h-6 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
                 <svg className="w-3 h-3 text-primary" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              info@mightygomesinc.ca
+              info@mightyhomesinc.ca
             </a>
           </div>
           <div className="flex items-center gap-3">

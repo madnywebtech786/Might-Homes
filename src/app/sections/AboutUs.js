@@ -4,9 +4,7 @@ import React from "react";
 
 const stats = [
   { value: "15+", label: "Years Building" },
-  { value: "500+", label: "Homes Built" },
   { value: "7+", label: "Communities" },
-  { value: "98%", label: "Client Satisfaction" },
 ];
 
 export default function AboutUs() {
@@ -33,7 +31,7 @@ export default function AboutUs() {
               Alberta's Trusted Custom Home
             </p>
             <p className="text-xl sm:text-2xl md:text-4xl lg:text-3xl px-4 font-semibold headFont mt-2">
-              Builder Since 2009.
+              Builder Since 2010.
             </p>
             <div className="px-4 sm:px-6">
               <p className="mt-6 text-sm text-gray-500 paraFont leading-relaxed">

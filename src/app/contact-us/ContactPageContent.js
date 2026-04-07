@@ -15,8 +15,8 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email Us",
-    value: "info@mightygomesinc.ca",
-    href: "mailto:info@mightygomesinc.ca",
+    value: "info@mightyhomesinc.ca",
+    href: "mailto:info@mightyhomesinc.ca",
     description: "We reply within 24 hours",
   },
   {
@@ -201,13 +201,13 @@ export default function ContactPageContent() {
                     <p className="text-gray-900 font-semibold text-sm group-hover:text-primary transition-colors duration-300">587-435-7924</p>
                   </div>
                 </a>
-                <a href="mailto:info@mightygomesinc.ca" className="flex items-center gap-3 group">
+                <a href="mailto:info@mightyhomesinc.ca" className="flex items-center gap-3 group">
                   <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors duration-300">
                     <Mail className="w-4 h-4 text-primary group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div>
                     <p className="text-gray-400 text-xs">Email</p>
-                    <p className="text-gray-900 font-semibold text-sm group-hover:text-primary transition-colors duration-300">info@mightygomesinc.ca</p>
+                    <p className="text-gray-900 font-semibold text-sm group-hover:text-primary transition-colors duration-300">info@mightyhomesinc.ca</p>
                   </div>
                 </a>
               </div>

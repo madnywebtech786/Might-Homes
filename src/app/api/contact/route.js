@@ -25,7 +25,7 @@ export async function POST(request) {
     // Email to company
     await transporter.sendMail({
       from: `"Mighty Homes Website" <${process.env.GMAIL_USER}>`,
-      to: "info@mightygomesinc.ca",
+      to: "info@mightyhomesinc.ca",
       subject: subjectLine,
       html: `
         <!DOCTYPE html>
@@ -88,7 +88,7 @@ export async function POST(request) {
               </div>
             </div>
             <div class="footer">
-              <p>Mighty Homes Inc. &bull; <a href="mailto:info@mightygomesinc.ca">info@mightygomesinc.ca</a> &bull; <a href="tel:5874357924">587-435-7924</a></p>
+              <p>Mighty Homes Inc. &bull; <a href="mailto:info@mightyhomesinc.ca">info@mightyhomesinc.ca</a> &bull; <a href="tel:5874357924">587-435-7924</a></p>
             </div>
           </div>
         </body>
@@ -146,13 +146,13 @@ export async function POST(request) {
               <p>If you have any urgent questions, please don't hesitate to contact us directly:</p>
               <p>
                 📞 <a href="tel:5874357924" style="color:#e1c08e;">587-435-7924</a><br/>
-                ✉️ <a href="mailto:info@mightygomesinc.ca" style="color:#e1c08e;">info@mightygomesinc.ca</a>
+                ✉️ <a href="mailto:info@mightyhomesinc.ca" style="color:#e1c08e;">info@mightyhomesinc.ca</a>
               </p>
               <br/>
               <p style="color:#999;font-size:13px;">Warm regards,<br/><strong style="color:#1a1a1a;">The Mighty Homes Team</strong></p>
             </div>
             <div class="footer">
-              <p>Mighty Homes Inc. &bull; Alberta, Canada &bull; <a href="mailto:info@mightygomesinc.ca">info@mightygomesinc.ca</a></p>
+              <p>Mighty Homes Inc. &bull; Alberta, Canada &bull; <a href="mailto:info@mightyhomesinc.ca">info@mightyhomesinc.ca</a></p>
             </div>
           </div>
         </body>

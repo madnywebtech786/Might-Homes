@@ -80,10 +80,10 @@ export default function Footer() {
                 <div className="flex flex-col gap-1">
                   <h3 className="text-base font-bold ">Official Email</h3>
                   <Link
-                    href="mailto:info@mightygomesinc.ca"
+                    href="mailto:info@mightyhomesinc.ca"
                     className="text-xs hover:underline"
                   >
-                    info@mightygomesinc.ca
+                    info@mightyhomesinc.ca
                   </Link>
                 </div>
               </div>

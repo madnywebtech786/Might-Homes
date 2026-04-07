@@ -5,9 +5,7 @@ import { Diamond, Heart, Clock, Handshake, Award, MapPin, ArrowRight } from "luc
 
 const stats = [
   { value: "15+", label: "Years of Experience" },
-  { value: "500+", label: "Homes Built" },
   { value: "7+", label: "Communities" },
-  { value: "98%", label: "Client Satisfaction" },
 ];
 
 const values = [
@@ -94,11 +92,11 @@ export default function AboutUsContent() {
 
       {/* ── Stats strip ── */}
       <div className="bg-primary px-4 md:px-8 lg:px-12 2xl:px-20 py-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {stats.map(({ value, label }) => (
             <div key={label} className="flex flex-col items-center gap-1 text-center">
-              <span className="text-4xl md:text-5xl font-extrabold text-white">{value}</span>
-              <span className="text-white/75 text-sm font-medium">{label}</span>
+              <span className="text-4xl md:text-6xl font-extrabold text-white">{value}</span>
+              <span className="text-white/75 text-base font-medium">{label}</span>
             </div>
           ))}
         </div>

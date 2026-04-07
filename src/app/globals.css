@@ -65,7 +65,70 @@ body {
 }
 
 .dropdown-menu a:hover {
-  color: white;
+  color: #e1c08e;
+}
+
+/* Parent of a submenu */
+.submenu-parent {
+  position: relative;
+  display: block !important;
+  cursor: pointer;
+  padding-right: 16px; /* Reduced space for the arrow indicator */
+}
+
+.submenu-parent:hover span {
+  color: #e1c08e;
+}
+
+.submenu-parent::after {
+  content: '›';
+  position: absolute;
+  right: 8px; /* Reduced right offset */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  line-height: 1;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.submenu-parent:hover::after {
+  opacity: 1;
+  color: #e1c08e;
+}
+
+/* Nested (flyout) submenu — slides out to the right */
+.submenu {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 4px);
+  background-color: white;
+  color: #4a4a4a;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.12);
+  width: max-content;
+  min-width: 180px;
+  transform: translateX(10px);
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  border-radius: 6px;
+}
+
+.submenu-parent:hover > .submenu {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+.submenu a {
+  padding: 8px 16px;
+  display: block;
+  text-decoration: none;
+  color: #4a4a4a;
+}
+
+.submenu a:hover {
+  color: #e1c08e;
 }
 
 .swiper-pagination{

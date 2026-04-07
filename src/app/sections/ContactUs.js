@@ -166,13 +166,13 @@ export default function ContactUs() {
               <span className="font-medium">587-435-7924</span>
             </a>
             <a
-              href="mailto:info@mightygomesinc.ca"
+              href="mailto:info@mightyhomesinc.ca"
               className="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors duration-200 text-sm"
             >
               <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
                 <Mail className="w-3.5 h-3.5 text-primary" />
               </div>
-              <span className="font-medium">info@mightygomesinc.ca</span>
+              <span className="font-medium">info@mightyhomesinc.ca</span>
             </a>
           </div>
         </div>
