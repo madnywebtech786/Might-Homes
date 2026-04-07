@@ -14,41 +14,72 @@ export default function FAQs() {
 
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
           <Accordion
-            title="Are there Quick Possession homes available in Savanna Calgary?"
+            title="How long does it take to build a custom home with Mighty Homes?"
             index={0}
             expandedIndex={expandedIndex}
             setExpandedIndex={setExpandedIndex}
           >
             <p>
-              Yes, Savanna offers a variety of quick possession homes tailored
-              to suit your timeline and budget. These homes are ready for
-              immediate move-in or nearing completion.
+              Build timelines typically range from 6 to 12 months depending on
+              the model, lot, and customization level. We provide a detailed
+              schedule during your proposal stage so you always know exactly
+              where you stand.
             </p>
           </Accordion>
 
           <Accordion
-            title="What home types are available in Savanna?"
+            title="What communities does Mighty Homes build in?"
             index={1}
             expandedIndex={expandedIndex}
             setExpandedIndex={setExpandedIndex}
           >
             <p>
-              Savanna features a wide selection of home types including laned
-              homes, front garage homes, duplexes, and townhomes designed for
-              modern families.
+              We currently build across Calgary, Airdrie, Chestermere, Cochrane,
+              Okotoks, and Strathmore. New communities are added regularly —
+              visit our Communities page or contact us to find out what's
+              available near you.
             </p>
           </Accordion>
 
           <Accordion
-            title="How much does it cost to buy a new home in Savanna?"
+            title="Can I customize the floor plan and finishes?"
             index={2}
             expandedIndex={expandedIndex}
             setExpandedIndex={setExpandedIndex}
           >
             <p>
-              Prices vary depending on the home type and size, but typically
-              start from the mid $400,000s. Flexible payment plans and financing
-              options are also available.
+              Absolutely. Every Mighty Homes build starts with your vision. We
+              offer flexible floor plan modifications, a premium selections
+              studio for finishes, and a dedicated design consultant who guides
+              you through every choice, from countertops to cabinetry.
+            </p>
+          </Accordion>
+
+          <Accordion
+            title="What is the Mighty Standard?"
+            index={3}
+            expandedIndex={expandedIndex}
+            setExpandedIndex={setExpandedIndex}
+          >
+            <p>
+              The Mighty Standard is our quality benchmark, a non-negotiable
+              commitment to premium materials, skilled craftsmanship, and
+              meticulous attention to detail in every home we build. It's our
+              promise that your home is built to last and built to impress.
+            </p>
+          </Accordion>
+
+          <Accordion
+            title="Do you offer warranties on your homes?"
+            index={4}
+            expandedIndex={expandedIndex}
+            setExpandedIndex={setExpandedIndex}
+          >
+            <p>
+              Yes. All Mighty Homes builds are covered by Alberta's New Home
+              Warranty program, which includes coverage for materials and labour,
+              building envelope, and major structural components. We also provide
+              our own post-possession support for complete peace of mind.
             </p>
           </Accordion>
         </div>

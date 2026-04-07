@@ -4,6 +4,63 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Button from "./Button";
+import { ChevronDown, X, Menu, Home, Users, MapPin, Building2, Image as ImageIcon, Hammer, Phone } from "lucide-react";
+
+function MobileAccordion({ label, icon: Icon, children, isOpen, onToggle }) {
+  return (
+    <div className="w-full">
+      <button
+        onClick={onToggle}
+        className="w-full flex items-center justify-between px-4 py-3.5 rounded-xl text-white/90 hover:text-white hover:bg-white/5 transition-all duration-200"
+      >
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-white/8 flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,255,255,0.07)" }}>
+            <Icon className="w-4 h-4 text-primary" />
+          </div>
+          <span className="font-semibold text-sm">{label}</span>
+        </div>
+        <ChevronDown
+          className={`w-4 h-4 text-white/40 transition-transform duration-300 ${isOpen ? "rotate-180 text-primary" : ""}`}
+        />
+      </button>
+
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"}`}
+      >
+        <div className="ml-4 pl-4 border-l border-primary/20 flex flex-col gap-0.5 py-1 mb-1">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MobileLink({ href, children, onClick }) {
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      className="block px-3 py-2.5 text-sm text-white/60 hover:text-primary hover:bg-primary/5 rounded-lg transition-all duration-200"
+    >
+      {children}
+    </Link>
+  );
+}
+
+function MobileNavLink({ href, label, icon: Icon, onClick }) {
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      className="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl text-white/90 hover:text-white hover:bg-white/5 transition-all duration-200"
+    >
+      <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "rgba(255,255,255,0.07)" }}>
+        <Icon className="w-4 h-4 text-primary" />
+      </div>
+      <span className="font-semibold text-sm">{label}</span>
+    </Link>
+  );
+}
 
 export default function Navbar() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -11,518 +68,196 @@ export default function Navbar() {
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsSticky(window.scrollY > 50); // Change when scrolling past 50px
-    };
-
+    const handleScroll = () => setIsSticky(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  const toggleMobileNav = () => {
-    setIsMobileNavOpen(!isMobileNavOpen);
-  };
 
-  const toggleAccordion = (accordionIndex) => {
-    setActiveAccordion((prev) =>
-      prev === accordionIndex ? null : accordionIndex
-    );
-  };
+  // Lock body scroll when drawer open
+  useEffect(() => {
+    document.body.style.overflow = isMobileNavOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [isMobileNavOpen]);
 
-  const closeMobileNav = () => {
-    if (activeAccordion === 1) {
-      toggleAccordion(1);
-    }
-    setIsMobileNavOpen(false); // Close the mobile nav when a link is clicked
-  };
+  const toggleAccordion = (i) => setActiveAccordion((prev) => (prev === i ? null : i));
+  const closeMobileNav = () => { setActiveAccordion(null); setIsMobileNavOpen(false); };
 
   return (
     <>
-      <nav
-        className={`absolute w-full top-0 z-50 px-4 md:px-8 lg:px-12 2xl:px-10 py-5 transition-colors duration-300 text-white`}
-      >
+      <nav className={`w-full top-0 z-50 px-4 md:px-8 lg:px-12 2xl:px-10 py-5 transition-all duration-300 text-white ${isSticky ? "fixed bg-black/90 backdrop-blur-md shadow-lg py-3" : "absolute"}`}>
         <div className="container mx-auto lg:px-4 flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="text-base font-bold">
-            <Link href="/">
-              <Image
-                src={
-                  isSticky
-                    ? "/images/logoRounded.png"
-                    : "/images/logoRounded.png"
-                }
-                width={100}
-                height={100}
-                alt="Mighty Homes Logo"
-                className="pt-5"
-              />
-            </Link>
-          </div>
+          <Link href="/">
+            <Image src="/images/logoRounded.png" width={100} height={100} alt="Mighty Homes Logo" className="w-20 h-20" />
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden xl:flex items-center space-x-8 text-base">
-            <Link href="/about-us" className="py-3 underline-animation">
-              About Us
-            </Link>
+            <Link href="/about-us" className="py-3 underline-animation">About Us</Link>
+
             <div className="relative group menu">
-              <div className="flex items-center">
-                <Link href="/about-us" className=" flex items-center py-3 ">
-                  Show Homes
-                  <span className="ml-2 transition-transform transform group-hover:rotate-180">
-                    <Image
-                      src="/images/icons/ArrowDownWhite.svg"
-                      alt="arrow img"
-                      width={13}
-                      height={13}
-                    />
-                  </span>
-                </Link>
-              </div>
-
-              {/* Dropdown Menu */}
-              <div className="dropdown-menu text-sm">
-                <Link
-                  href="/home/Chestermer"
-                  className="block px-4 py-2 hover:bg-primary capitalize rounded-t-md border-b border-primary"
-                >
-                  Chestermer
-                </Link>
-                <Link
-                  href="/home/Airdrie"
-                  className="block px-4 py-2 hover:bg-primary capitalize rounded-b-md"
-                >
-                  Airdrie
-                </Link>
-              </div>
-            </div>
-            <div className="relative group menu">
-              <div className="flex items-center">
-                <Link href="/about-us" className=" flex items-center py-3 ">
-                  Homes
-                  <span className="ml-2 transition-transform transform group-hover:rotate-180">
-                    <Image
-                      src="/images/icons/ArrowDownWhite.svg"
-                      alt="arrow img"
-                      width={13}
-                      height={13}
-                    />
-                  </span>
-                </Link>
-              </div>
-
-              {/* Dropdown Menu */}
-              <div className="dropdown-menu text-sm">
-                <Link
-                  href="/home/Aspire"
-                  className="block px-4 py-2 hover:bg-primary capitalize rounded-t-md border-b border-primary"
-                >
-                  Aspire
-                </Link>
-                <Link
-                  href="/home/Davis"
-                  className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
-                >
-                  Davis
-                </Link>
-                <Link
-                  href="/home/Dean"
-                  className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
-                >
-                  Dean
-                </Link>
-                <Link
-                  href="/home/Eastwood"
-                  className="block px-4 py-2 hover:bg-primary capitalize rounded-b-md"
-                >
-                  Eastwood
-                </Link>
-              </div>
-            </div>
-            <div className="relative group menu">
-              <div className="flex items-center">
-                <Link href="#" className=" flex items-center py-3 ">
-                  Communities
-                  <span className="ml-2 transition-transform transform group-hover:rotate-180">
-                    <Image
-                      src="/images/icons/ArrowDownWhite.svg"
-                      alt="arrow img"
-                      width={13}
-                      height={13}
-                    />
-                  </span>
-                </Link>
-              </div>
-
-              {/* Dropdown Menu */}
-              <div className="dropdown-menu text-sm">
-                <Link
-                  href="/Community/"
-                  className="block px-4 py-2 hover:bg-primary capitalize rounded-t-md border-b border-primary"
-                >
-                  All Communities
-                </Link>
-                <Link
-                  href="/Community/Air-Ranch"
-                  className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
-                >
-                  Air Ranch | Okotoksh
-                </Link>
-                <Link
-                  href="/Community/River-Crest"
-                  className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
-                >
-                  River Crest | Cochrane
-                </Link>
-                <Link
-                  href="/Community/Clear-Water"
-                  className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
-                >
-                  Clear Water | Chestermere
-                </Link>
-                <Link
-                  href="/Community/South-Shore"
-                  className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
-                >
-                  South Shore | Chestermere
-                </Link>
-                <Link
-                  href="/Community/Aspan"
-                  className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
-                >
-                  Aspan | Calagry
-                </Link>
-                <Link
-                  href="/Community/Bonus"
-                  className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary"
-                >
-                  Bonus | Calgary
-                </Link>
-                <Link
-                  href="/Community/Abrio"
-                  className="block px-4 py-2 hover:bg-primary capitalize rounded-b-md"
-                >
-                  Abrio | Airdrie
-                </Link>
-              </div>
-            </div>
-            <Link href="/projects" className=" py-3 underline-animation">
-              Town Houses
-            </Link>
-            <Link href="/projects" className=" py-3 underline-animation">
-              Gallery
-            </Link>
-            <Link href="/contact-us" className=" py-3 underline-animation">
-              Pre Construction Projects
-            </Link>
-            <Link href="/contact-us" className=" py-3 underline-animation">
-              Contact Us
-            </Link>
-            <div className="hidden xl:flex">
-              <Link href="/contact-us">
-                <Button
-                  text={"Book Now"}
-                  className="px-4 py-3 bg-primary rounded-lg "
-                  isSticky={isSticky}
-                  cl
-                />
-              </Link>
-            </div>
-          </div>
-
-          {/* Mobile Toggle Button */}
-          <div className="xl:hidden">
-            <button onClick={toggleMobileNav}>
-              <span className="text-2xl">&#9776;</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Drawer */}
-        <div
-          className={`fixed inset-0 bg-white z-50 transform transition-transform duration-300 max-h-screen overflow-scroll ${
-            isMobileNavOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          {/* Close Button */}
-          <div className="flex justify-end p-4">
-            <button onClick={toggleMobileNav} className="text-2xl text-black">
-              &times;
-            </button>
-          </div>
-
-          {/* Mobile Links */}
-          <div className="flex flex-col items-center text-black px-4">
-            <Link
-              href="/about-us"
-              className="text-base font-medium border-b w-full text-start py-2"
-              onClick={closeMobileNav}
-            >
-              About Us
-            </Link>
-
-            <div className="w-full mobile-menu">
-              {/* Planning Accordion */}
-              <button
-                onClick={() => toggleAccordion(1)}
-                className="text-base font-medium w-full text-left py-3 border-b flex justify-between items-center"
-              >
+              <span className="flex items-center py-3 cursor-default">
                 Show Homes
-                <Image
-                  src="/images/icons/ArrowDown.svg"
-                  alt="arrow"
-                  width={13}
-                  height={13}
-                  className={`transform transition-transform ${
-                    activeAccordion === 1 ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-500 ${
-                  activeAccordion === 1 ? "max-h-80" : "max-h-0"
-                }`}
-                style={{
-                  transitionProperty: "max-height",
-                }}
-              >
-                <div className="flex flex-col bg-primaryExtraLight text-base rounded-lg">
-                  <Link
-                    href="/home/Chestermer"
-                    className="block px-4 py-3 "
-                    onClick={closeMobileNav}
-                  >
-                    Chestermer
-                  </Link>
-                  <Link
-                    href="/home/Airdrie"
-                    className="block px-4 py-3 "
-                    onClick={closeMobileNav}
-                  >
-                    Airdrie
-                  </Link>
-                </div>
+                <span className="ml-2 transition-transform transform group-hover:rotate-180">
+                  <Image src="/images/icons/ArrowDownWhite.svg" alt="arrow" width={13} height={13} />
+                </span>
+              </span>
+              <div className="dropdown-menu text-sm">
+                <Link href="/home/aurora" className="block px-4 py-2 hover:bg-primary capitalize rounded-t-md border-b border-primary">The Aurora</Link>
+                <Link href="/home/luxe" className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary">The Luxe</Link>
+                <Link href="/home/legacy" className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary">The Legacy</Link>
+                <Link href="/home/bayview" className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary">The Bayview</Link>
+                <Link href="/home/willow" className="block px-4 py-2 hover:bg-primary capitalize rounded-b-md">The Willow</Link>
               </div>
             </div>
 
-            <div className="w-full mobile-menu">
-              {/* Planning Accordion */}
-              <button
-                onClick={() => toggleAccordion(2)}
-                className="text-base font-medium w-full text-left py-3 border-b flex justify-between items-center "
-              >
+            <div className="relative group menu">
+              <span className="flex items-center py-3 cursor-default">
                 Homes
-                <Image
-                  src="/images/icons/ArrowDown.svg"
-                  alt="arrow"
-                  width={13}
-                  height={13}
-                  className={`transform transition-transform ${
-                    activeAccordion === 2 ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-500 ${
-                  activeAccordion === 2 ? "max-h-80" : "max-h-0"
-                }`}
-                style={{
-                  transitionProperty: "max-height",
-                }}
-              >
-                <div className="flex flex-col bg-primaryExtraLight text-base rounded-lg">
-                  <Link
-                    href="/home/Aspire"
-                    className="block px-4 py-3 "
-                    onClick={closeMobileNav}
-                  >
-                    Aspire
-                  </Link>
-                  <Link
-                    href="/home/Connery"
-                    className="block px-4 py-3 "
-                    onClick={closeMobileNav}
-                  >
-                    Connery
-                  </Link>
-                  <Link
-                    href="/home/Davis"
-                    className="block px-4 py-3 "
-                    onClick={closeMobileNav}
-                  >
-                    Davis
-                  </Link>
-                  <Link
-                    href="/home/Dean"
-                    className="block px-4 py-3 "
-                    onClick={closeMobileNav}
-                  >
-                    Dean
-                  </Link>
-                  <Link
-                    href="/home/Eastwood"
-                    className="block px-4 py-3 "
-                    onClick={closeMobileNav}
-                  >
-                    Eastwood
-                  </Link>
-                </div>
+                <span className="ml-2 transition-transform transform group-hover:rotate-180">
+                  <Image src="/images/icons/ArrowDownWhite.svg" alt="arrow" width={13} height={13} />
+                </span>
+              </span>
+              <div className="dropdown-menu text-sm">
+                <Link href="/home/aurora" className="block px-4 py-2 hover:bg-primary capitalize rounded-t-md border-b border-primary">The Aurora</Link>
+                <Link href="/home/luxe" className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary">The Luxe</Link>
+                <Link href="/home/legacy" className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary">The Legacy</Link>
+                <Link href="/home/bayview" className="block px-4 py-2 hover:bg-primary capitalize border-b border-primary">The Bayview</Link>
+                <Link href="/home/willow" className="block px-4 py-2 hover:bg-primary capitalize rounded-b-md">The Willow</Link>
               </div>
             </div>
-            <div className="w-full mobile-menu">
-              {/* Planning Accordion */}
-              <button
-                onClick={() => toggleAccordion(3)}
-                className="text-base font-medium w-full text-left py-3 border-b flex justify-between items-center "
-              >
-                Communities
-                <Image
-                  src="/images/icons/ArrowDown.svg"
-                  alt="arrow"
-                  width={13}
-                  height={13}
-                  className={`transform transition-transform ${
-                    activeAccordion === 3 ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              <div
-                className={`overflow-hidden transition-all duration-500 ${
-                  activeAccordion === 3 ? "max-h-80" : "max-h-0"
-                }`}
-                style={{
-                  transitionProperty: "max-height",
-                }}
-              >
-                <div className="flex flex-col bg-primaryExtraLight text-base rounded-lg">
-                  <Link
-                    href="/Community/all"
-                    className="block px-4 py-3 "
-                    onClick={closeMobileNav}
-                  >
-                    All Communities
-                  </Link>
-                  <Link
-                    href="/Community/Air-Ranch"
-                    className="block px-4 py-3 "
-                    onClick={closeMobileNav}
-                  >
-                    Air Ranch | Okotoksh
-                  </Link>
-                  <Link
-                    href="/Community/River-Crest"
-                    className="block px-4 py-3 "
-                    onClick={closeMobileNav}
-                  >
-                    River Crest | Cochrane
-                  </Link>
-                  <Link
-                    href="/Community/Clear-Water"
-                    className="block px-4 py-3 "
-                    onClick={closeMobileNav}
-                  >
-                    Clear Water | Chestermere
-                  </Link>
-                  <Link
-                    href="/Community/South-Shore"
-                    className="block px-4 py-3 "
-                    onClick={closeMobileNav}
-                  >
-                    South Shore | Chestermere
-                  </Link>{" "}
-                  <Link
-                    href="/Community/Aspan"
-                    className="block px-4 py-3 "
-                    onClick={closeMobileNav}
-                  >
-                    Aspan | Calagry
-                  </Link>{" "}
-                  <Link
-                    href="/Community/Bonus"
-                    className="block px-4 py-3 "
-                    onClick={closeMobileNav}
-                  >
-                    Bonus | Calgary
-                  </Link>
-                  <Link
-                    href="/Community/Abrio"
-                    className="block px-4 py-3 "
-                    onClick={closeMobileNav}
-                  >
-                    Abrio | Airdrie
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <Link
-              href="/services"
-              className="text-base font-medium border-b w-full text-start py-2"
-              onClick={closeMobileNav}
-            >
-              Town Houses
-            </Link>
-            <Link
-              href="/products"
-              className="text-base font-medium border-b w-full text-start py-2"
-              onClick={closeMobileNav}
-            >
-              Pre Construction Projects
-            </Link>
-            <Link
-              href="/projects"
-              className="text-base font-medium border-b w-full text-start py-2"
-              onClick={closeMobileNav}
-            >
-              Gallery
-            </Link>
-            <Link
-              href="/contact-us"
-              className="text-base font-medium border-b w-full text-start py-3"
-              onClick={closeMobileNav}
-            >
-              Contact Us
+
+            <Link href="/community" className="py-3 underline-animation">Communities</Link>
+            <Link href="/town-houses" className="py-3 underline-animation">Town Houses</Link>
+            <Link href="/gallery" className="py-3 underline-animation">Gallery</Link>
+            <Link href="/pre-construction" className="py-3 underline-animation">Pre Construction</Link>
+            <Link href="/contact-us" className="py-3 underline-animation">Contact Us</Link>
+            <Link href="/contact-us">
+              <Button text="Book Now" className="cursor-pointer px-4 py-3 bg-primary rounded-lg" isSticky={isSticky} />
             </Link>
           </div>
 
-          {/* Social Links */}
-          <div className="absolute bottom-4 w-full flex justify-center space-x-6 px-4">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-80"
-            >
-              <img
-                src="/images/icons/FacebookIcon.svg"
-                alt="Facebook"
-                className="h-6 w-6"
-              />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-80"
-            >
-              <img
-                src="/images/icons/XIcon.svg"
-                alt="Twitter"
-                className="h-6 w-6"
-              />
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:opacity-80"
-            >
-              <img
-                src="/images/icons/InstaIcon.svg"
-                alt="Instagram"
-                className="h-6 w-6"
-              />
-            </a>
-          </div>
+          {/* Mobile toggle */}
+          <button
+            onClick={() => setIsMobileNavOpen(true)}
+            className="xl:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-primary hover:bg-primary/15 transition-colors duration-200 backdrop-blur-sm"
+          >
+            <Menu className="w-5 h-5 text-white" />
+          </button>
         </div>
       </nav>
+
+      {/* Mobile Drawer — backdrop */}
+      <div
+        className={`fixed inset-0 z-[60] transition-opacity duration-300 xl:hidden ${isMobileNavOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        style={{ background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)" }}
+        onClick={closeMobileNav}
+      />
+
+      {/* Mobile Drawer — panel */}
+      <div
+        className={`fixed top-0 right-0 h-full w-[300px] sm:w-[340px] z-[70] flex flex-col transition-transform duration-300 ease-in-out xl:hidden ${isMobileNavOpen ? "translate-x-0" : "translate-x-full"}`}
+        style={{ background: "linear-gradient(160deg, #0d1117 0%, #0a0f1e 60%, #100d05 100%)" }}
+      >
+        {/* Gold left border accent */}
+        <div className="absolute top-0 left-0 w-0.5 h-full bg-gradient-to-b from-primary/0 via-primary/60 to-primary/0" />
+
+        {/* Header */}
+        <div className="flex items-center justify-between px-5 py-5 border-b border-white/8" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+          <Link href="/" onClick={closeMobileNav}>
+            <Image src="/images/logoRounded.png" width={52} height={52} alt="Mighty Homes" />
+          </Link>
+          <button
+            onClick={closeMobileNav}
+            className="w-9 h-9 rounded-xl flex items-center justify-center text-white/60 hover:text-white hover:bg-white/8 transition-all duration-200"
+            style={{ background: "rgba(255,255,255,0.05)" }}
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Nav items — scrollable */}
+        <div className="flex-1 overflow-y-auto px-3 py-4 flex flex-col gap-0.5">
+
+          <MobileNavLink href="/about-us" label="About Us" icon={Users} onClick={closeMobileNav} />
+
+          <MobileAccordion
+            label="Show Homes"
+            icon={Home}
+            isOpen={activeAccordion === 1}
+            onToggle={() => toggleAccordion(1)}
+          >
+            <MobileLink href="/home/aurora" onClick={closeMobileNav}>The Aurora</MobileLink>
+            <MobileLink href="/home/luxe" onClick={closeMobileNav}>The Luxe</MobileLink>
+            <MobileLink href="/home/legacy" onClick={closeMobileNav}>The Legacy</MobileLink>
+            <MobileLink href="/home/bayview" onClick={closeMobileNav}>The Bayview</MobileLink>
+            <MobileLink href="/home/willow" onClick={closeMobileNav}>The Willow</MobileLink>
+          </MobileAccordion>
+
+          <MobileAccordion
+            label="Homes"
+            icon={Building2}
+            isOpen={activeAccordion === 2}
+            onToggle={() => toggleAccordion(2)}
+          >
+            <MobileLink href="/home/aurora" onClick={closeMobileNav}>The Aurora</MobileLink>
+            <MobileLink href="/home/luxe" onClick={closeMobileNav}>The Luxe</MobileLink>
+            <MobileLink href="/home/legacy" onClick={closeMobileNav}>The Legacy</MobileLink>
+            <MobileLink href="/home/bayview" onClick={closeMobileNav}>The Bayview</MobileLink>
+            <MobileLink href="/home/willow" onClick={closeMobileNav}>The Willow</MobileLink>
+          </MobileAccordion>
+
+          <MobileNavLink href="/community" label="Communities" icon={MapPin} onClick={closeMobileNav} />
+          <MobileNavLink href="/town-houses" label="Town Houses" icon={Building2} onClick={closeMobileNav} />
+          <MobileNavLink href="/pre-construction" label="Pre Construction" icon={Hammer} onClick={closeMobileNav} />
+          <MobileNavLink href="/gallery" label="Gallery" icon={ImageIcon} onClick={closeMobileNav} />
+          <MobileNavLink href="/contact-us" label="Contact Us" icon={Phone} onClick={closeMobileNav} />
+
+          {/* Book Now CTA */}
+          <div className="px-4 pt-4">
+            <Link
+              href="/contact-us"
+              onClick={closeMobileNav}
+              className="block w-full text-center px-6 py-3.5 bg-primary text-white font-bold rounded-xl text-sm hover:bg-yellow-600 transition-colors duration-300"
+            >
+              Book a Free Consultation
+            </Link>
+          </div>
+        </div>
+
+        {/* Footer — contact + socials */}
+        <div className="px-5 py-5 border-t flex flex-col gap-4" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+          <div className="flex flex-col gap-2">
+            <a href="tel:5874357924" className="flex items-center gap-2.5 text-white/50 hover:text-primary transition-colors duration-200 text-xs">
+              <div className="w-6 h-6 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
+                <Phone className="w-3 h-3 text-primary" />
+              </div>
+              587-435-7924
+            </a>
+            <a href="mailto:info@mightygomesinc.ca" className="flex items-center gap-2.5 text-white/50 hover:text-primary transition-colors duration-200 text-xs">
+              <div className="w-6 h-6 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
+                <svg className="w-3 h-3 text-primary" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              info@mightygomesinc.ca
+            </a>
+          </div>
+          <div className="flex items-center gap-3">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+              className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-primary/20 transition-colors duration-200"
+              style={{ background: "rgba(255,255,255,0.06)" }}>
+              <img src="/images/icons/FacebookWhite.svg" alt="Facebook" className="h-4 w-4 opacity-60" />
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+              className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-primary/20 transition-colors duration-200"
+              style={{ background: "rgba(255,255,255,0.06)" }}>
+              <img src="/images/icons/InstaWhite.svg" alt="Instagram" className="h-4 w-4 opacity-60" />
+            </a>
+            <p className="text-white/20 text-xxs ml-auto">© 2025 Mighty Homes</p>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

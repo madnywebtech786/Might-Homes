@@ -10,7 +10,7 @@ export default function Gallery({title="Our Amaizing Work Gallery"}) {
 
       <div className="w-full flex justify-center">
         <div className="w-full">
-          <div className=" grid grid-cols-1 gap-3 rounded-lg px-5 py-6">
+          <div className=" grid grid-cols-1 gap-3 rounded-lg lg:px-5 py-6">
             <div className="w-full flex flex-col md:flex-row gap-3">
               <div className="w-full lg:w-[22%] relative">
                 <div>

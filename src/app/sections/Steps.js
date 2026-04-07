@@ -3,17 +3,17 @@ import StepCard from "../components/StepCard";
 
 export default function Steps() {
   const steps = [
-    { title: "Contact", desc: "Reach out to us to start your project." },
+    { title: "Reach Out", desc: "Call, email, or fill out our form. We respond within 24 hours." },
     {
-      title: "Appointment",
-      desc: "Schedule a consultation at your convenience.",
+      title: "Consultation",
+      desc: "Free, no-pressure meeting to discuss your vision, budget, and lot options.",
     },
-    { title: "Inspection", desc: "We assess your home exterior needs." },
-    { title: "Proposal", desc: "Get a detailed quote and project plan." },
-    { title: "Approval", desc: "Approve the plan and choose materials." },
-    { title: "Execution", desc: "Our experts carry out the installation." },
-    { title: "Review", desc: "Final walkthrough and satisfaction check." },
-    { title: "Success", desc: "Enjoy your upgraded exterior!" },
+    { title: "Design", desc: "Our team creates custom floor plans and 3D renderings tailored to you." },
+    { title: "Proposal", desc: "Receive a detailed, transparent quote with full pricing. No hidden fees." },
+    { title: "Approval", desc: "Finalize your plan, select your finishes, and sign off to break ground." },
+    { title: "Construction", desc: "Our skilled tradespeople build your home with regular progress updates." },
+    { title: "Walkthrough", desc: "Pre-possession inspection: every detail checked against the Mighty Standard." },
+    { title: "Move In", desc: "Keys in hand. Your dream home is ready to welcome your family." },
   ];
   return (
     <div className="bg-gray-50 px-4 py-10 md:px-10 lg:px-20 lg:pt-30 lg:pb-20">

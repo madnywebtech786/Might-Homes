@@ -5,25 +5,25 @@ const aboutUsCardsData = [
   {
     main_Heading: "Communities",
     card_Description:
-      "A vareity of our best selling designs are available at various posession dates throughout the year. Check back of ten for avaiablity and selection across communities.",
+      "Discover Mighty Homes communities across Alberta's most desirable neighbourhoods. From Calgary to Cochrane, find the perfect location to plant roots and build the life you envision.",
     card_Image_Src: "/images/buildSlide3.png",
-    card_Icon_Src: "/images/client1.png",
+    card_Icon_Src: "/images/logoRounded.png",
     card_Button: "View All",
   },
   {
     main_Heading: "Show Homes",
     card_Description:
-      "A vareity of our best selling designs are available at various posession dates throughout the year. Check back of ten for avaiablity and selection across communities.",
+      "Tour our stunning show homes and experience the Mighty Standard firsthand. Walk through thoughtfully designed spaces, premium finishes, and layouts crafted for real family living.",
     card_Image_Src: "/images/buildSlide1.png",
-    card_Icon_Src: "/images/client2.png",
+    card_Icon_Src: "/images/logoRounded.png",
     card_Button: "View All",
   },
   {
     main_Heading: "Town Houses",
     card_Description:
-      "A vareity of our best selling designs are available at various posession dates throughout the year. Check back of ten for avaiablity and selection across communities.",
+      "Low-maintenance luxury for the modern lifestyle. Our townhomes combine smart design, premium finishes, and unbeatable value. Perfect for first-time buyers and young families.",
     card_Image_Src: "/images/buildSlide2.png",
-    card_Icon_Src: "/images/client3.png",
+    card_Icon_Src: "/images/logoRounded.png",
     card_Button: "View All",
   },
 ];

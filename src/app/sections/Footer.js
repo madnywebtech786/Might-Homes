@@ -11,16 +11,16 @@ export default function Footer() {
             <div className="flex justify-center w-3/4 flex-col gap-4">
               <Image
                 src={"/images/logo.png"}
-                alt="Sidhu logo"
+                alt="Mighty Homes logo"
                 width={550}
                 height={550}
                 className="rounded-xl h-full w-full"
               />
               <p className="text-xs">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit
-                est minima provident odit, ratione eaque explicabo maxime
-                voluptatem ex iste delectus obcaecati aperiam accusamus neque
-                commodi minus? Porro, neque corrupti.
+                Mighty Homes is Alberta's trusted custom home builder. For over
+                15 years we've been crafting premium, energy-efficient homes
+                across Calgary, Airdrie, Chestermere, Cochrane, Okotoks and
+                Strathmore, built to the Mighty Standard.
               </p>
             </div>
           </div>
@@ -29,14 +29,17 @@ export default function Footer() {
             <Link href="/about-us" className="underline-animation-white w-max">
               About Us
             </Link>
-            <Link href="/projects" className="underline-animation-white w-max">
-              Show Homes
+            <Link href="/community" className="underline-animation-white w-max">
+              Communities
             </Link>
-            <Link href="/process" className="underline-animation-white w-max">
-              Town Homes
+            <Link href="/town-houses" className="underline-animation-white w-max">
+              Town Houses
             </Link>
-            <Link href="/services" className="underline-animation-white w-max">
+            <Link href="/gallery" className="underline-animation-white w-max">
               Gallery
+            </Link>
+            <Link href="/pre-construction" className="underline-animation-white w-max">
+              Pre Construction
             </Link>
             <Link
               href="/contact-us"
@@ -60,8 +63,8 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col gap-1">
                   <h3 className="text-base font-bold ">Hotline</h3>
-                  <Link href="tel:4039666430" className="text-xs">
-                    403-966-6430
+                  <Link href="tel:5874357924" className="text-xs hover:underline">
+                    587-435-7924
                   </Link>
                 </div>
               </div>
@@ -77,10 +80,10 @@ export default function Footer() {
                 <div className="flex flex-col gap-1">
                   <h3 className="text-base font-bold ">Official Email</h3>
                   <Link
-                    href="mailto:mightyhomes@gmail.com"
-                    className="text-xs"
+                    href="mailto:info@mightygomesinc.ca"
+                    className="text-xs hover:underline"
                   >
-                    mightyhomes@gmail.com
+                    info@mightygomesinc.ca
                   </Link>
                 </div>
               </div>
@@ -110,7 +113,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="bg-white py-3 text-center text-secondary text-base">
-        Copyright &copy; 2025. All rights reserved.
+        Copyright &copy; {new Date().getFullYear()}. All rights reserved.
       </div>
     </>
   );

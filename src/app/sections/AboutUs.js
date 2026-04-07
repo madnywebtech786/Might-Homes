@@ -1,5 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
+
+const stats = [
+  { value: "15+", label: "Years Building" },
+  { value: "500+", label: "Homes Built" },
+  { value: "7+", label: "Communities" },
+  { value: "98%", label: "Client Satisfaction" },
+];
 
 export default function AboutUs() {
   return (
@@ -11,38 +19,55 @@ export default function AboutUs() {
               src="/images/aboutSideImg.png"
               width={500}
               height={500}
-              alt="About-us Image"
+              alt="Mighty Homes custom home builders Alberta"
               className="w-full rounded-2xl"
             />
           </div>
         </div>
         <div className="w-full flex justify-center lg:w-1/2">
-          <div className="mt-20 lg:mt-12">
+          <div className="mt-20 lg:mt-12 max-w-lg">
             <p className="text-md font-bold tracking-wider text-primary">
-              Mighty HOMES
+              Mighty Homes
             </p>
             <p className="text-xl sm:text-2xl md:text-4xl lg:text-3xl px-4 font-semibold headFont mt-2 text-[#0a1e40]">
-              High-quality Custom home
+              Alberta's Trusted Custom Home
             </p>
             <p className="text-xl sm:text-2xl md:text-4xl lg:text-3xl px-4 font-semibold headFont mt-2">
-              builder in Edmonton.
+              Builder Since 2009.
             </p>
-            <div className="px-6 sm:px-16">
-              <p className="mt-10 text-sm text-gray-500 paraFont">
-                Sidhu Homes has been helping people from all walks of life
-                experience the lifestyle of their dreams for over two decades.
-                We always do our best to ensure that your home suits you and
-                your family perfectly and that every home we build holds up to
-                our Sidhu Seal—the highest quality of construction and
-                materials.
+            <div className="px-4 sm:px-6">
+              <p className="mt-6 text-sm text-gray-500 paraFont leading-relaxed">
+                For over 15 years, Mighty Homes has been turning the dream of
+                homeownership into reality for Alberta families. We build more
+                than houses. We create spaces where milestones happen, children
+                grow, and memories are made to last a lifetime. Every home we
+                deliver meets our Mighty Standard: the highest benchmark for
+                craftsmanship, materials, and care.
               </p>
-              <div className="flex gap-5">
-                <button className="bg-transparent mt-10 py-2 font-bold border-b-2 border-primary text-primary hover:cursor-pointer hover:scale-95">
-                  Learn More
-                </button>
-                <button className="bg-transparent mt-10 py-2 font-bold border-b-2 border-primary text-primary hover:cursor-pointer hover:scale-95">
-                  Explore Our Projects
-                </button>
+              <p className="mt-4 text-sm text-gray-500 paraFont leading-relaxed">
+                From Calgary to Cochrane, Airdrie to Okotoks, our homes are
+                woven into the fabric of Alberta's most sought-after
+                neighbourhoods. We don't just hand over keys. We stay with
+                you from the first design conversation through to move-in day
+                and beyond.
+              </p>
+
+              <div className="grid grid-cols-2 gap-4 mt-8">
+                {stats.map(({ value, label }) => (
+                  <div key={label} className="bg-gray-50 rounded-xl px-4 py-4 border border-gray-100">
+                    <p className="text-2xl font-extrabold text-primary">{value}</p>
+                    <p className="text-xs text-gray-500 mt-0.5 font-medium">{label}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex gap-4 mt-8">
+                <Link href="/about-us" className="bg-transparent py-2 font-bold border-b-2 border-primary text-primary hover:scale-95 transition-transform text-sm">
+                  Our Story
+                </Link>
+                <Link href="/gallery" className="bg-transparent py-2 font-bold border-b-2 border-primary text-primary hover:scale-95 transition-transform text-sm">
+                  View Our Work
+                </Link>
               </div>
             </div>
           </div>

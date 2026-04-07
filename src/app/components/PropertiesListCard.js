@@ -1,59 +1,61 @@
 import React from "react";
 import Image from "next/image";
-import { Home, Bed, ShowerHead, LocateFixed } from "lucide-react";
+import Link from "next/link";
+import { Home, Bed, Bath, ArrowRight } from "lucide-react";
 
 export default function PropertiesListCard({ cardData, index }) {
   return (
-    <div className="bg-white w-full pb-4 group rounded-xl" key={index}>
-      <div className="relative overflow-hidden">
-        <div className="flex justify-center">
-          <Image
-            src={cardData.cardImageSrc}
-            width={500}
-            height={500}
-            alt="Properties-List Image"
-            className="w-full max-h-[300px] rounded-t-xl"
-          />
-        </div>
-        <div className="absolute top-full left-0 group-hover:top-0 duration-600 bg-white/20 flex items-center justify-center w-full h-full">
-          <button className="bg-primary text-white text-sm px-5 py-2 tracking-wider font-semibold rounded-2xl hover:cursor-pointer">
-            MORE DETAILS
-          </button>
-        </div>
-      </div>
-      <div className="bg-gray-200 flex gap-1 justify-around py-2 px-2 border-b-3 border-b-primary">
-        <div className="flex items-center gap-1">
-          <Home size={16} color="gray" />
-          <p className="text-sm md:text-xs text-gray-500">
-            {cardData.acres} Acres
-          </p>
-        </div>
-        <div className="flex items-center gap-1">
-          <Bed size={16} color="gray" />
-          <p className="text-sm md:text-xs text-gray-500">
-            {cardData.bedrooms} Bedrooms
-          </p>
-        </div>
-        <div className="flex items-center gap-1">
-          <ShowerHead size={18} color="gray" />
-          <p className="text-sm md:text-xs text-gray-500">
-            {cardData.bathrooms} Bathrooms
-          </p>
+    <div className="bg-white w-full group rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col" key={index}>
+      {/* Image */}
+      <div className="relative overflow-hidden h-[220px]">
+        <Image
+          src={cardData.cardImageSrc}
+          fill
+          alt={cardData.cardTitle}
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        {/* Hover overlay */}
+        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <Link
+            href={`/home/${cardData.slug}`}
+            className="bg-primary text-white text-sm px-6 py-2.5 tracking-wider font-semibold rounded-xl"
+          >
+            VIEW HOME
+          </Link>
         </div>
       </div>
-      <div className="w-full p-5 px-4 lg:px-8">
-        <h1 className="text-2xl md:text-sm lg:text-lg font-bold mb-3 group-hover:text-primary duration-300">
+
+      {/* Stats bar */}
+      <div className="grid grid-cols-3 border-b-2 border-primary">
+        {[
+          { icon: Home, label: "Area", value: cardData.area },
+          { icon: Bed, label: "Beds", value: `${cardData.bedrooms} Beds` },
+          { icon: Bath, label: "Baths", value: `${cardData.bathrooms} Baths` },
+        ].map(({ icon: Icon, label, value }) => (
+          <div key={label} className="flex flex-col items-center justify-center py-3 gap-1 bg-gray-50 border-r last:border-r-0 border-gray-200">
+            <Icon size={15} className="text-primary" />
+            <p className="text-[11px] text-gray-400 uppercase tracking-wide leading-none">{label}</p>
+            <p className="text-xs font-bold text-gray-700">{value}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Content */}
+      <div className="p-5 flex flex-col flex-1">
+        <h2 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors duration-300">
           {cardData.cardTitle}
-        </h1>
-        <div className="w-full flex items-center gap-3 mb-3">
-          <LocateFixed size={19} color="gray" />
-          <p className="text-gray-400 text-md md:text-sm">
-            {cardData.cardLocation}
-          </p>
-        </div>
-        <p className="text-gray-400 text-md md:text-sm border-b border-gray-300 pb-3">
-          {cardData.cardDescription}
+        </h2>
+        <p className="text-gray-400 text-sm leading-relaxed flex-1">
+          {cardData.cardDescription.length > 120
+            ? cardData.cardDescription.slice(0, 120).trimEnd() + "..."
+            : cardData.cardDescription}
         </p>
+        <Link
+          href={`/home/${cardData.slug}`}
+          className="mt-4 inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:gap-3 transition-all duration-200"
+        >
+          View Home <ArrowRight size={14} />
+        </Link>
       </div>
     </div>
   );
