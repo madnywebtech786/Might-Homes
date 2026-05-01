@@ -274,11 +274,7 @@ export default function GalleryContent() {
               </button>
             </div>
 
-            {/* Caption */}
-            <div className="mt-4 text-center" onClick={(e) => e.stopPropagation()}>
-              <span className="text-primary text-xs font-semibold tracking-widest uppercase">{current.category}</span>
-              <p className="text-white font-bold text-lg mt-1">{current.title}</p>
-            </div>
+         
 
             {/* Thumbnail strip */}
             <div

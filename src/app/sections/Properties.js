@@ -4,10 +4,10 @@ import { homesData } from "../data/homes";
 
 const cardImages = [
   "/images/homes/aurora/gallery-img1.webp",
-  "/images/buildSlide2.png",
-  "/images/buildSlide3.png",
-  "/images/buildSlide1.png",
-  "/images/buildSlide2.png",
+  "/images/decore-imgs/luxe.webp",
+  "/images/decore-imgs/legacy.webp",
+  "/images/decore-imgs/bayview.webp",
+  "/images/decore-imgs/willow.webp",
 ];
 
 export default function Properties() {

@@ -9,11 +9,11 @@ export default function AboutUsCard({ CardData, index }) {
         <div className="flex justify-center mt-4">
           <Image
             src={CardData.card_Image_Src}
-            width={200}
-            height={200}
+            width={300}
+            height={300}
             loading="lazy"
             alt="Card Image"
-            className="w-full max-h-[250px] rounded-xl "
+            className="w-full h-[280px] rounded-xl "
           />
         </div>
         <div className="py-5 -mt-16">

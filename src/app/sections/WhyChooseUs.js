@@ -77,12 +77,12 @@ export default function WhyChooseUs() {
           </div>
           <div className="z-10">
             <Image
-              src="/images/whychooseus.png"
+              src="/images/decore-imgs/cta-banner.webp"
               width={450}
               height={450}
               loading="lazy"
               alt="Why choose Mighty Homes — custom home builder Alberta"
-              className="w-[470px] h-[500px] rounded-3xl"
+              className="w-[470px] h-[500px] rounded-3xl object-cover"
             />
           </div>
           <div className="mt-36 z-20 flex flex-col lg:gap-20">
