@@ -29,7 +29,7 @@ Upstairs, the bonus room offers endless possibilities as a home theatre, playroo
     bedrooms: 4,
     baths: 3.5,
     area: "3,046 SQFT",
-    heroImage: "/images/decore-imgs/luxe.jpg",
+    heroImage: "/images/decore-imgs/luxe.webp",
     floorPlan: {
       img1: "/images/floor-plans/luxe/luxe-floor-plan.webp",
    
@@ -47,7 +47,7 @@ Upstairs, a spacious bonus room and a clever Jack and Jill bathroom serve growin
     bedrooms: 5,
     baths: 4,
     area: "3,182 SQFT",
-    heroImage: "/images/decore-imgs/legacy.jpg",
+    heroImage: "/images/decore-imgs/legacy.webp",
     floorPlan: {
       img1: "/images/floor-plans/legacy/legacy-floor-plan.webp",
     },
@@ -64,7 +64,7 @@ A main-floor flex room with a full bath is a thoughtful solution for guests or f
     bedrooms: 5,
     baths: 4,
     area: "2,960 SQFT",
-    heroImage: "/images/decore-imgs/bayview.jpg",
+    heroImage: "/images/decore-imgs/bayview.webp",
     floorPlan: {
       img1: "/images/floor-plans/bayview/bayview-floor-plan.webp",
     },
@@ -81,7 +81,7 @@ Five bedrooms, a main-floor flex room with full bath, three upper bathrooms, a b
     bedrooms: 4,
     baths: 4.5,
     area: "2,800 SQFT",
-    heroImage: "/images/decore-imgs/willow.jpg",
+    heroImage: "/images/decore-imgs/willow.webp",
     floorPlan: {
       img1: "/images/floor-plans/willow/willow-floor-plan.webp",
       pdf: "/images/floor-plans/willow/The-Willow-Floor-Plan.pdf",
