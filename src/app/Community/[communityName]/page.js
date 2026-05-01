@@ -48,6 +48,7 @@ export default async function CommunityPage({ params }) {
                 src="/images/buildSlide3.png"
                 width={600}
                 height={500}
+                loading="lazy"
                 alt={`${name} community homes — Mighty Homes`}
                 className="w-full md:w-9/10 rounded-xl"
               />
@@ -79,6 +80,7 @@ export default async function CommunityPage({ params }) {
                 src="/images/CommunityOfSavanna.png"
                 width={600}
                 height={600}
+                loading="lazy"
                 alt={`${name} community map — Mighty Homes`}
                 className="w-full h-[200px] sm:h-[300px] lg:h-[440px] rounded-2xl"
               />

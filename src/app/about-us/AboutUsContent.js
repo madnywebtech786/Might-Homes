@@ -4,8 +4,8 @@ import Link from "next/link";
 import { Diamond, Heart, Clock, Handshake, Award, MapPin, ArrowRight } from "lucide-react";
 
 const stats = [
-  { value: "15+", label: "Years of Experience" },
-  { value: "7+", label: "Communities" },
+  { value: "16", label: "Years of Experience" },
+  { value: "150+", label: "Homes Built" },
 ];
 
 const values = [
@@ -69,7 +69,7 @@ export default function AboutUsContent() {
             <span style={{ WebkitTextStroke: "2px #e1c08e", color: "transparent" }}>Alberta</span>
           </h1>
           <p className="text-white/60 text-base leading-relaxed max-w-md mb-8">
-            For over 15 years, Mighty Homes has been crafting exceptional custom homes for Alberta families — built with precision, delivered with pride.
+            For over 16 years, Mighty Homes has been crafting exceptional custom homes for Alberta families — built with precision, delivered with pride.
           </p>
           <div className="flex flex-row gap-3">
             <Link href="/contact-us"
@@ -85,7 +85,7 @@ export default function AboutUsContent() {
 
         {/* Right image — hidden on mobile */}
         <div className="hidden lg:block relative lg:w-1/2">
-          <Image src="/images/buildSlide2.png" fill alt="Mighty Homes" className="object-cover" priority />
+          <Image src="/images/buildSlide2.png" loading="lazy" fill alt="Mighty Homes" className="object-cover"  />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0d1117] via-transparent to-transparent" />
         </div>
       </section>
@@ -108,7 +108,7 @@ export default function AboutUsContent() {
           {/* Image */}
           <div className="relative">
             <div className="relative rounded-3xl overflow-hidden" style={{ paddingBottom: "110%" }}>
-              <Image src="/images/aboutSideImg.png" fill alt="Mighty Homes Team" className="object-cover" />
+              <Image src="/images/decore-imgs/about-side.webp" loading="lazy" fill alt="Mighty Homes Team" className="object-contain" />
             </div>
             <div className="absolute -bottom-6 -right-4 md:right-4 bg-white rounded-2xl shadow-xl shadow-black/10 p-5 flex items-center gap-4 border border-gray-100">
               <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -120,7 +120,7 @@ export default function AboutUsContent() {
               </div>
             </div>
             <div className="absolute top-6 left-6 w-16 h-16 rounded-2xl bg-white shadow-lg flex items-center justify-center p-2">
-              <Image src="/images/logoRounded.png" width={48} height={48} alt="Mighty Homes Logo" />
+              <Image src="/images/logoRounded.png" loading="lazy" width={48} height={48} alt="Mighty Homes Logo" />
             </div>
           </div>
 
@@ -137,7 +137,7 @@ export default function AboutUsContent() {
               </h2>
             </div>
             <p className="text-gray-500 leading-relaxed text-base">
-              Mighty Homes has been crafting exceptional custom homes across Alberta for over 15 years.
+              Mighty Homes has been crafting exceptional custom homes across Alberta for over 16 years.
               We believe every family deserves a home that truly reflects who they are — designed with care,
               built with precision, and delivered with pride.
             </p>
@@ -241,39 +241,13 @@ export default function AboutUsContent() {
         </div>
       </div>
 
-      {/* ── Communities We Build In ── */}
-      <div className="bg-gray-50 px-4 md:px-8 lg:px-12 2xl:px-20 py-20">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-14">
-            <div className="flex items-center justify-center gap-3 mb-3">
-              <div className="h-px w-10 bg-primary" />
-              <span className="text-primary text-xs font-semibold tracking-[4px] uppercase">Where We Build</span>
-              <div className="h-px w-10 bg-primary" />
-            </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900">
-              Communities We<span className="text-primary"> Build In</span>
-            </h2>
-          </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {cities.map(({ name, img }) => (
-              <div key={name} className="group relative rounded-2xl overflow-hidden aspect-square">
-                <Image src={img} fill alt={name} className="object-cover group-hover:scale-110 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute bottom-3 left-0 right-0 text-center">
-                  <p className="text-white font-bold text-sm drop-shadow">{name}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* ── CTA Banner ── */}
       <div
         className="relative overflow-hidden mx-4 md:mx-8 lg:mx-12 2xl:mx-20 mb-20 rounded-3xl px-8 py-16 text-center"
         style={{
-          backgroundImage: "linear-gradient(135deg, rgba(0,0,0,0.88) 0%, rgba(177,139,55,0.28) 100%), url('/images/whychooseus.png')",
+          backgroundImage: "linear-gradient(135deg, rgba(0,0,0,0.88) 0%, rgba(177,139,55,0.28) 100%), url('/images/decore-imgs/gallery2.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

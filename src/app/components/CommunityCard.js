@@ -9,6 +9,7 @@ export default function CommunityCard({ imgPath, name, cityName }) {
         alt={`${cityName} city`}
         width={200}
         height={200}
+        loading="lazy"
         className="rounded-3xl w-full"
       />
       <div className="pl-2">

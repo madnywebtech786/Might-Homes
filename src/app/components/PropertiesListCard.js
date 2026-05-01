@@ -12,6 +12,7 @@ export default function PropertiesListCard({ cardData, index }) {
           src={cardData.cardImageSrc}
           fill
           alt={cardData.cardTitle}
+          loading="lazy"
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
         {/* Hover overlay */}

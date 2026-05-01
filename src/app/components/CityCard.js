@@ -10,6 +10,7 @@ export default function CityCard({ imgPath, noOfProperties, cityName }) {
           alt={`${cityName} city`}
           width={200}
           height={200}
+          loading="lazy"
           className="rounded-3xl w-full"
         />
         <div className="bg-black/30 absolute top-0 left-0 rounded-3xl  h-full w-full"></div>

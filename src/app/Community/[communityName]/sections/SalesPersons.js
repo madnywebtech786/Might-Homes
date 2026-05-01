@@ -18,6 +18,7 @@ export default function SalesPersons() {
                     src="/images/AboutUsSideImage.png"
                     width={130}
                     height={130}
+                    loading="lazy"
                     alt="Sales person Image"
                     className="w-[110px] h-[110px] rounded-[100%]"
                   />
@@ -58,6 +59,7 @@ export default function SalesPersons() {
                     src="/images/AboutUsSideImage.png"
                     width={130}
                     height={130}
+                    loading="lazy"
                     alt="Sales person Image"
                     className="w-[110px] h-[110px] rounded-[100%]"
                   />

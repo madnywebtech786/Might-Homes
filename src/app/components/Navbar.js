@@ -116,7 +116,7 @@ export default function Navbar() {
         <div className="container mx-auto lg:px-4 flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/">
-            <Image src="/images/logoRounded.png" width={100} height={100} alt="Mighty Homes Logo" className="w-20 h-20" />
+            <Image src="/images/logoRounded.png" width={100} height={100} loading="lazy" alt="Mighty Homes Logo" className="w-20 h-20" />
           </Link>
 
           {/* Desktop Nav */}
@@ -131,17 +131,21 @@ export default function Navbar() {
                 </span>
               </span>
               <div className="dropdown-menu text-sm">
-                <div className="relative group/sub submenu-parent">
-                  <span className="block px-4 py-2 capitalize rounded-t-md border-b border-primary cursor-default w-full">South Shore | Chestermere</span>
+                <div className="relative submenu-parent">
+                  <span className="block px-4 py-2 capitalize rounded-t-md border-b border-primary cursor-default w-full select-none">South Shore | Chestermere</span>
                   <div className="submenu">
-                    <Link href="/home/aurora" className="block px-4 py-2 capitalize">The Aurora</Link>
+                    <div className="submenu-inner">
+                      <Link href="/home/aurora" className="block px-4 py-2 capitalize">The Aurora</Link>
+                    </div>
                   </div>
                 </div>
 
-                <div className="relative group/sub submenu-parent">
-                  <span className="block px-4 py-2 capitalize border-b border-primary cursor-default w-full">Bay Springs | Airdrie</span>
+                <div className="relative submenu-parent">
+                  <span className="block px-4 py-2 capitalize cursor-default w-full select-none">Bay Springs | Airdrie</span>
                   <div className="submenu">
-                    <Link href="/coming-soon" className="block px-4 py-2 capitalize">Coming Soon</Link>
+                    <div className="submenu-inner">
+                      <Link href="/coming-soon" className="block px-4 py-2 capitalize">Coming Soon</Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -163,7 +167,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            <Link href="/community" className="py-3 underline-animation">Communities</Link>
+            <Link href="/Community" className="py-3 underline-animation">Communities</Link>
             <Link href="/town-houses" className="py-3 underline-animation">Town Houses</Link>
             <Link href="/gallery" className="py-3 underline-animation">Gallery</Link>
             <Link href="/pre-construction" className="py-3 underline-animation">Pre Construction</Link>
@@ -201,7 +205,7 @@ export default function Navbar() {
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-5 border-b border-white/8" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
           <Link href="/" onClick={closeMobileNav}>
-            <Image src="/images/logoRounded.png" width={52} height={52} alt="Mighty Homes" />
+            <Image src="/images/logoRounded.png" loading="lazy" width={52} height={52} alt="Mighty Homes" />
           </Link>
           <button
             onClick={closeMobileNav}
@@ -213,7 +217,7 @@ export default function Navbar() {
         </div>
 
         {/* Nav items — scrollable */}
-        <div className="flex-1 overflow-y-auto px-3 py-4 flex flex-col gap-0.5">
+        <div className="nav-scroll flex-1 overflow-y-auto px-3 py-4 flex flex-col gap-0.5">
 
           <MobileNavLink href="/about-us" label="About Us" icon={Users} onClick={closeMobileNav} />
 
@@ -253,7 +257,7 @@ export default function Navbar() {
             <MobileLink href="/home/willow" onClick={closeMobileNav}>The Willow</MobileLink>
           </MobileAccordion>
 
-          <MobileNavLink href="/community" label="Communities" icon={MapPin} onClick={closeMobileNav} />
+          <MobileNavLink href="/Community" label="Communities" icon={MapPin} onClick={closeMobileNav} />
           <MobileNavLink href="/town-houses" label="Town Houses" icon={Building2} onClick={closeMobileNav} />
           <MobileNavLink href="/pre-construction" label="Pre Construction" icon={Hammer} onClick={closeMobileNav} />
           <MobileNavLink href="/gallery" label="Gallery" icon={ImageIcon} onClick={closeMobileNav} />

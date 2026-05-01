@@ -1,23 +1,20 @@
 import Image from "next/image";
 import AboutUs from "./sections/AboutUs";
-import AboutUsCards from "./components/AboutUsCards";
 import AboutAfter from "./sections/AboutAfter";
 import Header from "./sections/Header";
-import Communities from "./sections/Communities";
-import WorkingCities from "./sections/WorkingCities";
 import Properties from "./sections/Properties";
 import Steps from "./sections/Steps";
-import FAQs from "./sections/FAQs";
-import Gallery from "./sections/Gallery";
+
 import WhyChooseUs from "./sections/WhyChooseUs";
 import Testimonials from "./sections/Testimonials";
 import ContactUs from "./sections/ContactUs";
 import Footer from "./sections/Footer";
+import WorkingAreas from "./components/WorkingAreas";
 
 export const metadata = {
   title: "Mighty Homes | Custom Home Builder in Alberta",
   description:
-    "Discover Mighty Homes — Alberta's premium custom home builder. We build stunning, energy-efficient homes across Calgary, Airdrie, Chestermere, Cochrane, Okotoks & Strathmore. 500+ homes. 15+ years. Book your free consultation today.",
+    "Discover Mighty Homes — Alberta's premium custom home builder. We build stunning, energy-efficient homes across Calgary, Airdrie, Chestermere, Cochrane, Okotoks & Strathmore. 500+ homes. 16 years. Book your free consultation today.",
   alternates: {
     canonical: "https://mightyhomes.ca",
   },
@@ -38,9 +35,8 @@ export default function Home() {
       <AboutAfter />
       <WhyChooseUs />
       <Properties />
-      <WorkingCities />
       <Steps />
-      <Communities />
+      <WorkingAreas />
       <Testimonials />
       <ContactUs />
       <Footer />

@@ -28,28 +28,18 @@ const StatsSection = () => {
 
   const stats = [
     {
-      value: 15,
+      value: 16,
       label: "Years of Experience",
       symbol: "+",
       animation: "fade-up",
     },
     {
-      value: 120,
-      label: "The Best Property",
-      symbol: "k",
+      value: 150,
+      label: "Homes Built",
+      symbol: "+",
       animation: "fade-down",
     },
-    {
-      value: 50,
-      label: "Partners Worked",
-      animation: "fade-up",
-    },
-    {
-      value: 50,
-      label: "World Clients",
-      symbol: "k",
-      animation: "fade-down",
-    },
+   
   ];
 
   return (
@@ -57,11 +47,11 @@ const StatsSection = () => {
       ref={sectionRef}
       className="my-20 py-10 mx-4 md:mx-8 lg:mx-12 xl:mx-20 bg-white rounded-lg shadow-xl block lg:absolute -bottom-1/4 left-1/8"
     >
-      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 ">
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-1 ">
         {stats.map((stat, index) => (
           <div
             className={`flex justify-center lg:justify-center px-8 py-5 w-full gap-10  ${
-              index != 3 ? "lg:border-r-2" : ""
+              index != 1 ? "lg:border-r-2" : ""
             } border-gray-300`}
           >
             <div

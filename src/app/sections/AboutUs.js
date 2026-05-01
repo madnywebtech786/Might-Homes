@@ -3,8 +3,8 @@ import Link from "next/link";
 import React from "react";
 
 const stats = [
-  { value: "15+", label: "Years Building" },
-  { value: "7+", label: "Communities" },
+  { value: "16", label: "Years Building" },
+  { value: "150+", label: "Homes Built" },
 ];
 
 export default function AboutUs() {
@@ -12,11 +12,12 @@ export default function AboutUs() {
     <div>
       <div className="w-full flex flex-col lg:flex-row justify-center p-4 py-10 md:p-8 lg:p-12 2xl:p-20">
         <div className="w-full lg:w-1/2 flex justify-center items-center">
-          <div className="w-4/5">
+          <div className="w-11/12">
             <Image
-              src="/images/aboutSideImg.png"
+              src="/images/decore-imgs/about-side.webp"
               width={500}
               height={500}
+              loading="lazy"
               alt="Mighty Homes custom home builders Alberta"
               className="w-full rounded-2xl"
             />
@@ -35,7 +36,7 @@ export default function AboutUs() {
             </p>
             <div className="px-4 sm:px-6">
               <p className="mt-6 text-sm text-gray-500 paraFont leading-relaxed">
-                For over 15 years, Mighty Homes has been turning the dream of
+                For over 16 years, Mighty Homes has been turning the dream of
                 homeownership into reality for Alberta families. We build more
                 than houses. We create spaces where milestones happen, children
                 grow, and memories are made to last a lifetime. Every home we

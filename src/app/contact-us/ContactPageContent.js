@@ -8,9 +8,8 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Call Us",
-    value: "587-435-7924",
+    value: "587 - 435 - 7924",
     href: "tel:5874357924",
-    description: "Mon–Fri, 9am–6pm MST",
   },
   {
     icon: Mail,
@@ -22,17 +21,11 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Our Office",
-    value: "Alberta, Canada",
+    value: "Calgary, Canada",
     href: "#",
-    description: "Serving all of Alberta",
+    description: "Serving all of Calgary",
   },
-  {
-    icon: Clock,
-    label: "Office Hours",
-    value: "Mon – Fri",
-    href: "#",
-    description: "9:00 AM – 6:00 PM MST",
-  },
+
 ];
 
 export default function ContactPageContent() {
@@ -120,7 +113,7 @@ export default function ContactPageContent() {
 
       {/* Contact Info Cards */}
       <div className="px-4 md:px-8 lg:px-12 2xl:px-20 -mt-8 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {contactInfo.map(({ icon: Icon, label, value, href, description }) => (
             <a
               key={label}
@@ -148,7 +141,7 @@ export default function ContactPageContent() {
           <div className="lg:col-span-2 flex flex-col gap-8">
             {/* Logo */}
             <div className="flex items-center gap-3">
-              <Image src="/images/logoRounded.png" width={60} height={60} alt="Mighty Homes" />
+              <Image src="/images/logoRounded.png" loading="lazy" width={60} height={60} alt="Mighty Homes" />
               <div>
                 <p className="text-gray-400 text-xs uppercase tracking-widest">Mighty Homes</p>
                 <p className="text-gray-900 font-bold text-sm">Building Alberta's Future</p>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRef, useState, useCallback, useEffect } from "react";
 import { Home, Bed, Bath, Phone, Mail, ArrowRight, CheckCircle } from "lucide-react";
 import Gallery from "@/app/sections/Gallery";
 import Navbar from "@/app/components/Navbar";
@@ -8,6 +9,101 @@ import Footer from "@/app/sections/Footer";
 import Link from "next/link";
 import { getHomeBySlug } from "@/app/data/homes";
 import { use } from "react";
+
+function FloorPlanZoom({ src, alt }) {
+  const containerRef = useRef(null);
+  const dragRef = useRef({ dragging: false, startX: 0, startY: 0, lastTx: 0, lastTy: 0 });
+  const [transform, setTransform] = useState({ scale: 1, tx: 0, ty: 0 });
+
+  // Prevent page scroll while the wheel is used over the canvas
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const onWheel = (e) => {
+      e.preventDefault();
+      const rect = el.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+      const delta = e.deltaY < 0 ? 0.15 : -0.15;
+      setTransform((prev) => {
+        const nextScale = Math.min(5, Math.max(1, prev.scale + delta));
+        if (nextScale === prev.scale) return prev;
+        // Zoom towards cursor: adjust translation so the point under the cursor stays fixed
+        const scaleRatio = nextScale / prev.scale;
+        const tx = mouseX - scaleRatio * (mouseX - prev.tx);
+        const ty = mouseY - scaleRatio * (mouseY - prev.ty);
+        return { scale: nextScale, tx, ty };
+      });
+    };
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, []);
+
+  const onMouseDown = useCallback((e) => {
+    dragRef.current = {
+      dragging: true,
+      startX: e.clientX,
+      startY: e.clientY,
+      lastTx: transform.tx,
+      lastTy: transform.ty,
+    };
+  }, [transform.tx, transform.ty]);
+
+  const onMouseMove = useCallback((e) => {
+    if (!dragRef.current.dragging) return;
+    const dx = e.clientX - dragRef.current.startX;
+    const dy = e.clientY - dragRef.current.startY;
+    setTransform((prev) => ({ ...prev, tx: dragRef.current.lastTx + dx, ty: dragRef.current.lastTy + dy }));
+  }, []);
+
+  const onMouseUp = useCallback(() => { dragRef.current.dragging = false; }, []);
+
+  const reset = useCallback(() => setTransform({ scale: 1, tx: 0, ty: 0 }), []);
+
+  const isDragging = transform.scale > 1;
+
+  return (
+    <div
+      ref={containerRef}
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
+      onMouseUp={onMouseUp}
+      onMouseLeave={onMouseUp}
+      className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-sm select-none"
+      style={{ cursor: isDragging ? "grab" : "zoom-in" }}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        loading="lazy"
+        fill
+        className="object-contain pointer-events-none"
+        style={{
+          transform: `translate(${transform.tx}px, ${transform.ty}px) scale(${transform.scale})`,
+          transformOrigin: "0 0",
+          transition: dragRef.current.dragging ? "none" : "transform 0.1s ease",
+        }}
+      />
+
+      {/* Hint */}
+      {transform.scale === 1 && (
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm pointer-events-none whitespace-nowrap">
+          Scroll to zoom · Drag to pan
+        </div>
+      )}
+
+      {/* Reset button */}
+      {transform.scale > 1 && (
+        <button
+          onClick={reset}
+          className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm transition-colors"
+        >
+          Reset
+        </button>
+      )}
+    </div>
+  );
+}
 
 export default function HomeDetailContent({ params }) {
   const { homeName } = use(params);
@@ -54,8 +150,9 @@ export default function HomeDetailContent({ params }) {
             src={home.heroImage}
             alt={`${home.name} custom home by Mighty Homes`}
             fill
+            loading="lazy"
             className="object-cover"
-            priority
+            
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
         </div>
@@ -185,47 +282,41 @@ export default function HomeDetailContent({ params }) {
         id="floor-plan"
         className="w-full py-16 lg:py-24 px-6 lg:px-20 bg-gray-50"
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-primary font-semibold tracking-widest uppercase text-sm mb-2">
               Layout & Design
             </p>
             <h2 className="text-4xl font-black text-gray-900">{home.name} Floor Plan</h2>
+            <p className="text-gray-400 text-sm mt-3">Hover over the plan to zoom in</p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="relative w-full aspect-square rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-sm">
-              <Image
-                src={home.floorPlan.img1}
-                alt={`${home.name} floor plan — main floor`}
-                fill
-                className="object-contain"
-              />
-              <div className="absolute bottom-4 left-4 bg-black/60 text-white text-xs font-semibold px-3 py-1.5 rounded-lg backdrop-blur-sm">
-                Main Floor
-              </div>
-            </div>
-            <div className="relative w-full aspect-square rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-sm">
-              <Image
-                src={home.floorPlan.img2}
-                alt={`${home.name} floor plan — second floor`}
-                fill
-                className="object-contain"
-              />
-              <div className="absolute bottom-4 left-4 bg-black/60 text-white text-xs font-semibold px-3 py-1.5 rounded-lg backdrop-blur-sm">
-                Second Floor
-              </div>
-            </div>
-          </div>
+          <FloorPlanZoom
+            src={home.floorPlan.img1}
+            alt={`${home.name} floor plan`}
+          />
 
-          <p className="text-center text-gray-400 text-sm mt-6">
-            Floor plans are for illustration purposes. Actual layout may vary slightly.
-          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
+        
+            {home.floorPlan.pdf && (
+              <a
+                href={home.floorPlan.pdf}
+                download
+                className="flex items-center gap-2.5 px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90 active:scale-95 flex-shrink-0"
+                style={{ background: "#E5322D" }}
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm0 1.5V9h4.5L14 3.5zM9.3 15.3c-.2.5-.4.9-.7 1.2-.4.4-.8.6-1.3.6-.3 0-.6-.1-.8-.2-.5-.3-.7-.9-.5-1.5.1-.4.4-.7.8-1 .4-.3.9-.5 1.5-.7.2-.5.4-1.1.5-1.7-.3-.5-.5-1.1-.5-1.7 0-.5.1-.9.4-1.1.2-.2.5-.3.8-.3.4 0 .7.1.9.4.2.3.3.7.2 1.1-.1.5-.3 1-.7 1.6.3.8.6 1.5 1 2.1.5-.1 1-.2 1.5-.2.6 0 1 .1 1.3.4.3.2.4.5.4.9 0 .3-.1.6-.3.8-.3.3-.7.4-1.2.4-.6 0-1.2-.2-1.9-.7-.6.1-1.2.3-1.9.6zm.5-.7c.5-.2 1-.4 1.5-.5-.3-.5-.6-1.1-.8-1.7-.1.5-.3 1-.5 1.5l-.2.7zm1-4.4c.2-.4.3-.8.4-1.1 0-.2 0-.3-.1-.4-.1 0-.1 0-.2.1-.1.1-.2.3-.2.6 0 .3.1.6.1.8zm3.5 4c-.3 0-.6 0-.9.1.4.3.8.4 1 .4.2 0 .3 0 .4-.1.1-.1.1-.1.1-.2 0-.1-.1-.2-.2-.2h-.4zm-4.1 1c-.3.2-.5.4-.6.6-.1.2-.1.3 0 .4.1 0 .2.1.3.1.2 0 .4-.1.5-.3.1-.2.2-.5.3-.8h-.5z"/>
+                </svg>
+                Download Floor Plan PDF
+              </a>
+            )}
+          </div>
         </div>
       </section>
 
       {/* ── GALLERY ── */}
-      <Gallery title={`${home.name} Gallery`} />
+      <Gallery title={`${home.name} Gallery`} images={home.galleryImages} homeName={home.slug} />
 
       {/* ── CTA BANNER ── */}
       <section

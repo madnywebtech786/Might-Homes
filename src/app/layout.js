@@ -18,7 +18,7 @@ export const metadata = {
     template: "%s | Mighty Homes",
   },
   description:
-    "Mighty Homes is Alberta's trusted custom home builder. We craft premium, energy-efficient homes in Calgary, Airdrie, Chestermere, Cochrane, Okotoks & Strathmore. 15+ years. 500+ homes built. Get a free consultation today.",
+    "Mighty Homes is Alberta's trusted custom home builder. We craft premium, energy-efficient homes in Calgary, Airdrie, Chestermere, Cochrane, Okotoks & Strathmore. 16 years. 500+ homes built. Get a free consultation today.",
   keywords: [
     "custom home builder Alberta",
     "new homes Calgary",
@@ -42,7 +42,7 @@ export const metadata = {
     siteName: "Mighty Homes",
     title: "Mighty Homes | Custom Home Builder in Alberta",
     description:
-      "Build the home you've always dreamed of with Mighty Homes — Alberta's trusted custom home builder for over 15 years. 500+ homes built across Calgary, Airdrie, Chestermere & beyond.",
+      "Build the home you've always dreamed of with Mighty Homes — Alberta's trusted custom home builder for over 16 years. 500+ homes built across Calgary, Airdrie, Chestermere & beyond.",
     images: [
       {
         url: "/images/og-image.png",
@@ -56,7 +56,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Mighty Homes | Custom Home Builder in Alberta",
     description:
-      "Build your dream home with Alberta's trusted custom builder. 500+ homes. 15+ years. Serving Calgary, Airdrie, Chestermere, Cochrane & more.",
+      "Build your dream home with Alberta's trusted custom builder. 500+ homes. 16 years. Serving Calgary, Airdrie, Chestermere, Cochrane & more.",
     images: ["/images/og-image.png"],
   },
   robots: {

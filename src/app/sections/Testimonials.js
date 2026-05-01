@@ -38,7 +38,7 @@ export default function Testimonials() {
       <h1 className="text-center text-xl sm:text-2xl md:text-4xl lg:text-3xl font-bold">
         What our Clients Say!
       </h1>
-      <div className="w-full flex justify-center mt-10">
+      <div className="w-full flex justify-center mt-10 py-10">
         <Swiper
           modules={[Pagination, Autoplay]}
           spaceBetween={50}

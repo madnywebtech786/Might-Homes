@@ -80,6 +80,7 @@ export default function WhyChooseUs() {
               src="/images/whychooseus.png"
               width={450}
               height={450}
+              loading="lazy"
               alt="Why choose Mighty Homes — custom home builder Alberta"
               className="w-[470px] h-[500px] rounded-3xl"
             />

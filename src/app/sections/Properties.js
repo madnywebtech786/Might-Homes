@@ -1,10 +1,9 @@
 import React from "react";
-import Link from "next/link";
 import PropertiesListCard from "../components/PropertiesListCard";
 import { homesData } from "../data/homes";
 
 const cardImages = [
-  "/images/buildSlide1.png",
+  "/images/homes/aurora/gallery-img1.webp",
   "/images/buildSlide2.png",
   "/images/buildSlide3.png",
   "/images/buildSlide1.png",

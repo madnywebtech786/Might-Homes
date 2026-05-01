@@ -1,13 +1,13 @@
 .slide1Bg {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
-      url('/images/buildSlide1.png');
+      url('/images/decore-imgs/slide1.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   }
   .slide2Bg {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
-      url('/images/buildSlide2.png');
+      url('/images/decore-imgs/slide2.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -15,7 +15,7 @@
  
   .slide3Bg {
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
-      url('/images/buildSlide3.png');
+      url('/images/decore-imgs/slide3.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

@@ -13,7 +13,8 @@ export default function CommunityBreadcrumb({ title, backgroundImage }) {
         layout="fill"
         objectFit="fill"
         className="z-0"
-        priority
+        loading="lazy"
+        
       />
 
       {/* Overlay */}

@@ -14,11 +14,12 @@ export default function Footer() {
                 alt="Mighty Homes logo"
                 width={550}
                 height={550}
+                loading="lazy"
                 className="rounded-xl h-full w-full"
               />
               <p className="text-xs">
                 Mighty Homes is Alberta's trusted custom home builder. For over
-                15 years we've been crafting premium, energy-efficient homes
+                16 years we've been crafting premium, energy-efficient homes
                 across Calgary, Airdrie, Chestermere, Cochrane, Okotoks and
                 Strathmore, built to the Mighty Standard.
               </p>
@@ -29,7 +30,7 @@ export default function Footer() {
             <Link href="/about-us" className="underline-animation-white w-max">
               About Us
             </Link>
-            <Link href="/community" className="underline-animation-white w-max">
+            <Link href="/Community" className="underline-animation-white w-max">
               Communities
             </Link>
             <Link href="/town-houses" className="underline-animation-white w-max">
